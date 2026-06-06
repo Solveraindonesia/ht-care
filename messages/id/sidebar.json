@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "dataHt": "Data HT",
+    "dataBorrower": "Data Peminjam",
+    "scanBorrow": "Scan Pinjam",
+    "scanReturn": "Scan Kembali",
+    "logHistory": "Riwayat Log"
+  },
+  "sections": {
+    "main": "UTAMA",
+    "masterData": "MASTER DATA",
+    "transaction": "TRANSAKSI",
+    "report": "LAPORAN"
+  }
+}

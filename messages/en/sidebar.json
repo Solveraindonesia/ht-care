@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "dataHt": "HT Data",
+    "dataBorrower": "Borrower Data",
+    "scanBorrow": "Scan Borrow",
+    "scanReturn": "Scan Return",
+    "logHistory": "Log History"
+  },
+  "sections": {
+    "main": "MAIN",
+    "masterData": "MASTER DATA",
+    "transaction": "TRANSACTION",
+    "report": "REPORT"
+  }
+}

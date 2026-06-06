@@ -1,0 +1,20 @@
+{
+  "submit": "Kirim",
+  "cancel": "Batal",
+  "save": "Simpan",
+  "loading": "Memuat...",
+  "success": "Berhasil",
+  "error": "Terjadi kesalahan",
+  "logout": "Keluar",
+  "theme": {
+    "toggle": "Ganti tema",
+    "light": "Terang",
+    "dark": "Gelap",
+    "system": "Sistem"
+  },
+  "language": {
+    "toggle": "Ganti bahasa",
+    "id": "Indonesia (ID)",
+    "en": "Inggris (EN)"
+  }
+}

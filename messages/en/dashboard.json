@@ -1,0 +1,18 @@
+{
+  "title": "Dashboard Info",
+  "totalHt": "Total HT",
+  "available": "Available in Warehouse",
+  "borrowed": "Currently Borrowed",
+  "broken": "Broken HT",
+  "recentTransactions": "Recent Borrow Transactions",
+  "table": {
+    "htId": "HT ID",
+    "borrower": "Borrower",
+    "borrowTime": "Borrow Time",
+    "status": "Status"
+  },
+  "status": {
+    "borrowed": "Borrowed",
+    "completed": "Completed"
+  }
+}

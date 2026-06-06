@@ -1,0 +1,20 @@
+{
+  "submit": "Submit",
+  "cancel": "Cancel",
+  "save": "Save",
+  "loading": "Loading...",
+  "success": "Success",
+  "error": "An error occurred",
+  "logout": "Logout",
+  "theme": {
+    "toggle": "Toggle theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "language": {
+    "toggle": "Toggle language",
+    "id": "Indonesian (ID)",
+    "en": "English (EN)"
+  }
+}

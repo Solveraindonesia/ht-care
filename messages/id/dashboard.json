@@ -1,0 +1,18 @@
+{
+  "title": "Info Dashboard",
+  "totalHt": "Total HT",
+  "available": "Tersedia di Gudang",
+  "borrowed": "Sedang Dipinjam",
+  "broken": "HT Rusak",
+  "recentTransactions": "Transaksi Peminjaman Terbaru",
+  "table": {
+    "htId": "HT ID",
+    "borrower": "Peminjam",
+    "borrowTime": "Waktu Pinjam",
+    "status": "Status"
+  },
+  "status": {
+    "borrowed": "Dipinjam",
+    "completed": "Selesai"
+  }
+}
