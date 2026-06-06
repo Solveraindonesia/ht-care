@@ -1,13 +1,13 @@
 import { withAuth } from 'next-auth/middleware'
 
 export default withAuth(
-  function middleware() {
-    // Just pass through if authorized
+  function proxy() {
+    // Just pass through, no next-intl middleware needed since we don't use localized paths
   },
   {
     callbacks: {
       authorized: ({ req, token }) => {
-        const isPublicPage = req.nextUrl.pathname.startsWith('/auth/login')
+        const isPublicPage = req.nextUrl.pathname.startsWith('/login')
 
         if (isPublicPage) {
           return true
@@ -17,11 +17,20 @@ export default withAuth(
       }
     },
     pages: {
-      signIn: '/auth/login'
+      signIn: '/login'
     }
   }
 )
 
 export const config = {
-  matcher: ['/((?!api|_next|.*\\..*).*)']
+  matcher: [
+    /*
+     * Match all request paths except for:
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     * - static files with common image/vector extensions
+     */
+    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)'
+  ]
 }
