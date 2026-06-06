@@ -5,12 +5,15 @@
     "dataBorrower": "Data Peminjam",
     "scanBorrow": "Scan Pinjam",
     "scanReturn": "Scan Kembali",
-    "logHistory": "Riwayat Log"
+    "logHistory": "Riwayat Log",
+    "report": "Laporan",
+    "settings": "Pengaturan"
   },
   "sections": {
     "main": "UTAMA",
     "masterData": "MASTER DATA",
     "transaction": "TRANSAKSI",
-    "report": "LAPORAN"
+    "report": "LAPORAN",
+    "preferences": "PENGATURAN"
   }
 }

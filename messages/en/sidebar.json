@@ -5,12 +5,15 @@
     "dataBorrower": "Borrower Data",
     "scanBorrow": "Scan Borrow",
     "scanReturn": "Scan Return",
-    "logHistory": "Log History"
+    "logHistory": "Log History",
+    "report": "Report",
+    "settings": "Settings"
   },
   "sections": {
     "main": "MAIN",
     "masterData": "MASTER DATA",
     "transaction": "TRANSACTION",
-    "report": "REPORT"
+    "report": "REPORT",
+    "preferences": "PREFERENCES"
   }
 }
