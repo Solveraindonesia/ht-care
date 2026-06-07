@@ -1,0 +1,38 @@
+{
+  "title": "Dashboard Info",
+  "totalHt": "Total HT",
+  "available": "Available in Warehouse",
+  "borrowed": "Currently Borrowed",
+  "broken": "Broken HT",
+  "recentTransactions": "Recent Borrow Transactions",
+  "quickActions": "Quick Actions",
+  "viewAll": "View All",
+  "scanBorrowTitle": "Scan Borrow",
+  "scanBorrowDesc": "Issue an HT device to a borrower by scanning its QR code.",
+  "scanReturnTitle": "Scan Return",
+  "scanReturnDesc": "Return an HT device to the inventory and check its condition.",
+  "addHtTitle": "Add HT",
+  "addHtDesc": "Register a new HT device to the inventory database.",
+  "addBorrowerTitle": "Add Borrower",
+  "addBorrowerDesc": "Register a new borrower from their respective department.",
+  "table": {
+    "htId": "HT ID",
+    "borrower": "Borrower",
+    "borrowTime": "Borrow Time",
+    "status": "Status"
+  },
+  "status": {
+    "borrowed": "Borrowed",
+    "completed": "Completed"
+  },
+  "analytics": {
+    "title": "Reports & Analytics",
+    "subtitle": "Overview of RF device utilization and status.",
+    "loansTitle": "Loans",
+    "loansSubtitle": "Monthly Trends",
+    "distributionTitle": "Division Distribution",
+    "distributionSubtitle": "HT Usage by Dept",
+    "conditionTitle": "Condition Status",
+    "conditionSubtitle": "Device Health"
+  }
+}

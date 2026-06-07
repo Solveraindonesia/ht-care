@@ -1,0 +1,38 @@
+{
+  "title": "Info Dashboard",
+  "totalHt": "Total HT",
+  "available": "Tersedia di Gudang",
+  "borrowed": "Sedang Dipinjam",
+  "broken": "HT Rusak",
+  "recentTransactions": "Transaksi Peminjaman Terbaru",
+  "quickActions": "Aksi Cepat",
+  "viewAll": "Lihat Semua",
+  "scanBorrowTitle": "Scan Pinjam",
+  "scanBorrowDesc": "Pinjamkan unit HT dengan memindai QR Code.",
+  "scanReturnTitle": "Scan Kembali",
+  "scanReturnDesc": "Kembalikan unit HT ke gudang dan verifikasi kondisi.",
+  "addHtTitle": "Tambah HT",
+  "addHtDesc": "Daftarkan unit HT baru ke sistem inventaris.",
+  "addBorrowerTitle": "Tambah Peminjam",
+  "addBorrowerDesc": "Daftarkan borrower/peminjam baru dari divisi.",
+  "table": {
+    "htId": "HT ID",
+    "borrower": "Peminjam",
+    "borrowTime": "Waktu Pinjam",
+    "status": "Status"
+  },
+  "status": {
+    "borrowed": "Dipinjam",
+    "completed": "Selesai"
+  },
+  "analytics": {
+    "title": "Laporan & Analitik",
+    "subtitle": "Tinjauan umum penggunaan dan status unit HT.",
+    "loansTitle": "Peminjaman",
+    "loansSubtitle": "Tren Bulanan",
+    "distributionTitle": "Distribusi Divisi",
+    "distributionSubtitle": "Penggunaan HT per Divisi",
+    "conditionTitle": "Status Kondisi",
+    "conditionSubtitle": "Kesehatan Perangkat"
+  }
+}
