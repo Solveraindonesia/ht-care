@@ -6,6 +6,7 @@
   "success": "Success",
   "error": "An error occurred",
   "logout": "Logout",
+  "viewAll": "View All",
   "theme": {
     "toggle": "Toggle theme",
     "light": "Light",

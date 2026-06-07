@@ -6,6 +6,7 @@
   "success": "Berhasil",
   "error": "Terjadi kesalahan",
   "logout": "Keluar",
+  "viewAll": "Lihat Semua",
   "theme": {
     "toggle": "Ganti tema",
     "light": "Terang",

@@ -43,7 +43,7 @@ export default withAuth(
         }
       } else {
         // If user is admin/operator/superadmin, prevent accessing borrower routes
-        if (pathname.startsWith('/borrower')) {
+        if (pathname.startsWith('/borrower/')) {
           return NextResponse.redirect(new URL('/dashboard', req.url))
         }
       }
