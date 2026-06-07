@@ -13,6 +13,7 @@ function mapBorrower(b: PrismaBorrower): Borrower {
     barcode: b.barcode,
     fullName: b.full_name,
     department: b.department,
+    email: b.email,
     createdAt: b.createdAt.toISOString(),
     updatedAt: b.updatedAt.toISOString()
   }
