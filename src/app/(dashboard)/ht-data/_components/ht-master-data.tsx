@@ -17,10 +17,10 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { useCreateHtItem, useDeleteHtItem, useHtItems, useUpdateHtItem } from '@/hooks/use-ht-items'
 import { getHtFormSchema } from '@/schemas/ht.schema'
 
-import { BarcodeDisplay } from './barcode-display'
-import { ConfirmationDialog } from './confirmation-dialog'
-import { MasterDataHeader } from './master-data-header'
-import { HtConditionBadge, HtStatusBadge } from './status-badge'
+import { BarcodeDisplay } from '@/components/shared/barcode-display'
+import { ConfirmationDialog } from '@/components/shared/confirmation-dialog'
+import { MasterDataHeader } from '@/components/shared/master-data-header'
+import { HtConditionBadge, HtStatusBadge } from '@/components/shared/status-badge'
 
 import type { HtFormData } from '@/schemas/ht.schema'
 import type { HtItem } from '@/types/ht'

@@ -16,9 +16,9 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { useBorrowers, useCreateBorrower, useDeleteBorrower, useUpdateBorrower } from '@/hooks/use-borrowers'
 import { getBorrowerFormSchema } from '@/schemas/borrower.schema'
 
-import { BarcodeDisplay } from './barcode-display'
-import { ConfirmationDialog } from './confirmation-dialog'
-import { MasterDataHeader } from './master-data-header'
+import { BarcodeDisplay } from '@/components/shared/barcode-display'
+import { ConfirmationDialog } from '@/components/shared/confirmation-dialog'
+import { MasterDataHeader } from '@/components/shared/master-data-header'
 
 import type { BorrowerFormData } from '@/schemas/borrower.schema'
 import type { Borrower } from '@/types/borrower'
