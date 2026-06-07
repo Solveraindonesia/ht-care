@@ -1,0 +1,78 @@
+{
+  "title": "HT Master Data",
+  "description": "Manage HT units, condition, borrowing status, and inventory barcodes.",
+  "search": {
+    "label": "Search HT data",
+    "placeholder": "Search code, barcode, or brand..."
+  },
+  "action": {
+    "add": "Add HT",
+    "edit": "Edit HT",
+    "delete": "Delete HT",
+    "cancel": "Cancel",
+    "save": "Save",
+    "confirmDelete": "Delete"
+  },
+  "field": {
+    "htCode": "HT Code",
+    "htCodePlaceholder": "HT-001",
+    "barcode": "Barcode",
+    "barcodePlaceholder": "Leave empty to use the HT code",
+    "brandType": "Brand / Type",
+    "brandTypePlaceholder": "Baofeng UV-5R",
+    "condition": "Condition",
+    "status": "Status"
+  },
+  "condition": {
+    "good": "Good",
+    "broken": "Broken"
+  },
+  "status": {
+    "available": "Available",
+    "borrowed": "Borrowed"
+  },
+  "table": {
+    "htCode": "HT Code",
+    "brandType": "Brand / Type",
+    "barcode": "Barcode",
+    "condition": "Condition",
+    "status": "Status",
+    "actions": "Actions"
+  },
+  "barcode": {
+    "download": "Download Barcode",
+    "preview": "HT barcode preview"
+  },
+  "dialog": {
+    "create": {
+      "title": "Add HT Data",
+      "description": "Enter the new HT unit details."
+    },
+    "edit": {
+      "title": "Edit HT Data",
+      "description": "Update the selected HT unit details."
+    },
+    "delete": {
+      "title": "Delete HT Data",
+      "description": "HT data {code} will be removed from master data."
+    }
+  },
+  "feedback": {
+    "loading": "Loading HT data...",
+    "loadError": "Failed to load HT data.",
+    "saveError": "Failed to save HT data.",
+    "deleteError": "Failed to delete HT data.",
+    "empty": "No matching HT data found."
+  },
+  "validation": {
+    "htCodeRequired": "HT code is required.",
+    "htCodeMax": "HT code must be 32 characters or less.",
+    "barcodeMax": "Barcode must be 64 characters or less.",
+    "barcodeInvalid": "Barcode can only contain letters, numbers, hyphens, and underscores.",
+    "brandTypeRequired": "Brand or type is required.",
+    "brandTypeMax": "Brand or type must be 100 characters or less.",
+    "conditionRequired": "Condition is required.",
+    "statusRequired": "Status is required.",
+    "idRequired": "ID is required."
+  }
+}

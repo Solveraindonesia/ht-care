@@ -1,0 +1,78 @@
+{
+  "title": "Master Data HT",
+  "description": "Kelola unit HT, kondisi, status peminjaman, dan barcode inventaris.",
+  "search": {
+    "label": "Cari data HT",
+    "placeholder": "Cari kode, barcode, atau merk..."
+  },
+  "action": {
+    "add": "Tambah HT",
+    "edit": "Edit HT",
+    "delete": "Hapus HT",
+    "cancel": "Batal",
+    "save": "Simpan",
+    "confirmDelete": "Hapus"
+  },
+  "field": {
+    "htCode": "Kode HT",
+    "htCodePlaceholder": "HT-001",
+    "barcode": "Barcode",
+    "barcodePlaceholder": "Kosongkan untuk memakai kode HT",
+    "brandType": "Merk / Tipe",
+    "brandTypePlaceholder": "Baofeng UV-5R",
+    "condition": "Kondisi",
+    "status": "Status"
+  },
+  "condition": {
+    "good": "Baik",
+    "broken": "Rusak"
+  },
+  "status": {
+    "available": "Tersedia",
+    "borrowed": "Dipinjam"
+  },
+  "table": {
+    "htCode": "Kode HT",
+    "brandType": "Merk / Tipe",
+    "barcode": "Barcode",
+    "condition": "Kondisi",
+    "status": "Status",
+    "actions": "Aksi"
+  },
+  "barcode": {
+    "download": "Unduh Barcode",
+    "preview": "Pratinjau barcode HT"
+  },
+  "dialog": {
+    "create": {
+      "title": "Tambah Data HT",
+      "description": "Masukkan detail unit HT baru."
+    },
+    "edit": {
+      "title": "Edit Data HT",
+      "description": "Perbarui detail unit HT yang dipilih."
+    },
+    "delete": {
+      "title": "Hapus Data HT",
+      "description": "Data HT {code} akan dihapus dari master data."
+    }
+  },
+  "feedback": {
+    "loading": "Memuat data HT...",
+    "loadError": "Gagal memuat data HT.",
+    "saveError": "Gagal menyimpan data HT.",
+    "deleteError": "Gagal menghapus data HT.",
+    "empty": "Tidak ada data HT yang cocok."
+  },
+  "validation": {
+    "htCodeRequired": "Kode HT wajib diisi.",
+    "htCodeMax": "Kode HT maksimal 32 karakter.",
+    "barcodeMax": "Barcode maksimal 64 karakter.",
+    "barcodeInvalid": "Barcode hanya boleh berisi huruf, angka, tanda hubung, dan garis bawah.",
+    "brandTypeRequired": "Merk atau tipe wajib diisi.",
+    "brandTypeMax": "Merk atau tipe maksimal 100 karakter.",
+    "conditionRequired": "Kondisi wajib dipilih.",
+    "statusRequired": "Status wajib dipilih.",
+    "idRequired": "ID wajib diisi."
+  }
+}

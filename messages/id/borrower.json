@@ -1,0 +1,69 @@
+{
+  "title": "Master Data Peminjam",
+  "description": "Kelola data peminjam, departemen, dan barcode identitas peminjaman.",
+  "search": {
+    "label": "Cari data peminjam",
+    "placeholder": "Cari kode, nama, departemen, atau barcode..."
+  },
+  "action": {
+    "add": "Tambah Peminjam",
+    "edit": "Edit Peminjam",
+    "delete": "Hapus Peminjam",
+    "cancel": "Batal",
+    "save": "Simpan",
+    "confirmDelete": "Hapus"
+  },
+  "field": {
+    "borrowerCode": "Kode Peminjam",
+    "borrowerCodePlaceholder": "P-001",
+    "barcode": "Barcode",
+    "barcodePlaceholder": "Kosongkan untuk memakai kode peminjam",
+    "fullName": "Nama Lengkap",
+    "fullNamePlaceholder": "Nama peminjam",
+    "department": "Departemen",
+    "departmentPlaceholder": "Keamanan"
+  },
+  "table": {
+    "borrowerCode": "Kode Peminjam",
+    "fullName": "Nama Lengkap",
+    "department": "Departemen",
+    "barcode": "Barcode",
+    "actions": "Aksi"
+  },
+  "barcode": {
+    "download": "Unduh Barcode",
+    "preview": "Pratinjau barcode peminjam"
+  },
+  "dialog": {
+    "create": {
+      "title": "Tambah Data Peminjam",
+      "description": "Masukkan detail peminjam baru."
+    },
+    "edit": {
+      "title": "Edit Data Peminjam",
+      "description": "Perbarui detail peminjam yang dipilih."
+    },
+    "delete": {
+      "title": "Hapus Data Peminjam",
+      "description": "Data peminjam {code} akan dihapus dari master data."
+    }
+  },
+  "feedback": {
+    "loading": "Memuat data peminjam...",
+    "loadError": "Gagal memuat data peminjam.",
+    "saveError": "Gagal menyimpan data peminjam.",
+    "deleteError": "Gagal menghapus data peminjam.",
+    "empty": "Tidak ada data peminjam yang cocok."
+  },
+  "validation": {
+    "borrowerCodeRequired": "Kode peminjam wajib diisi.",
+    "borrowerCodeMax": "Kode peminjam maksimal 32 karakter.",
+    "barcodeMax": "Barcode maksimal 64 karakter.",
+    "barcodeInvalid": "Barcode hanya boleh berisi huruf, angka, tanda hubung, dan garis bawah.",
+    "fullNameRequired": "Nama lengkap wajib diisi.",
+    "fullNameMax": "Nama lengkap maksimal 100 karakter.",
+    "departmentRequired": "Departemen wajib diisi.",
+    "departmentMax": "Departemen maksimal 100 karakter.",
+    "idRequired": "ID wajib diisi."
+  }
+}

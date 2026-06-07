@@ -90,6 +90,7 @@ enum HTStatus {
 model HT_Item {
   id         String      @id @default(cuid())
   ht_code    String      @unique // e.g., "HT-001"
+  barcode    String?
   brand_type String // e.g., "Baofeng UV-5R"
   condition  HTCondition @default(GOOD)
   status     HTStatus    @default(AVAILABLE)
@@ -105,6 +106,7 @@ model HT_Item {
 model Borrower {
   id            String @id @default(cuid())
   borrower_code String @unique // e.g., "P-001"
+  barcode       String?
   full_name     String
   department    String // e.g., "Keamanan"
 

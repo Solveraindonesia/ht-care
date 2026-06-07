@@ -1,0 +1,69 @@
+{
+  "title": "Borrower Master Data",
+  "description": "Manage borrowers, departments, and borrowing identity barcodes.",
+  "search": {
+    "label": "Search borrower data",
+    "placeholder": "Search code, name, department, or barcode..."
+  },
+  "action": {
+    "add": "Add Borrower",
+    "edit": "Edit Borrower",
+    "delete": "Delete Borrower",
+    "cancel": "Cancel",
+    "save": "Save",
+    "confirmDelete": "Delete"
+  },
+  "field": {
+    "borrowerCode": "Borrower Code",
+    "borrowerCodePlaceholder": "P-001",
+    "barcode": "Barcode",
+    "barcodePlaceholder": "Leave empty to use the borrower code",
+    "fullName": "Full Name",
+    "fullNamePlaceholder": "Borrower name",
+    "department": "Department",
+    "departmentPlaceholder": "Security"
+  },
+  "table": {
+    "borrowerCode": "Borrower Code",
+    "fullName": "Full Name",
+    "department": "Department",
+    "barcode": "Barcode",
+    "actions": "Actions"
+  },
+  "barcode": {
+    "download": "Download Barcode",
+    "preview": "Borrower barcode preview"
+  },
+  "dialog": {
+    "create": {
+      "title": "Add Borrower Data",
+      "description": "Enter the new borrower details."
+    },
+    "edit": {
+      "title": "Edit Borrower Data",
+      "description": "Update the selected borrower details."
+    },
+    "delete": {
+      "title": "Delete Borrower Data",
+      "description": "Borrower data {code} will be removed from master data."
+    }
+  },
+  "feedback": {
+    "loading": "Loading borrower data...",
+    "loadError": "Failed to load borrower data.",
+    "saveError": "Failed to save borrower data.",
+    "deleteError": "Failed to delete borrower data.",
+    "empty": "No matching borrower data found."
+  },
+  "validation": {
+    "borrowerCodeRequired": "Borrower code is required.",
+    "borrowerCodeMax": "Borrower code must be 32 characters or less.",
+    "barcodeMax": "Barcode must be 64 characters or less.",
+    "barcodeInvalid": "Barcode can only contain letters, numbers, hyphens, and underscores.",
+    "fullNameRequired": "Full name is required.",
+    "fullNameMax": "Full name must be 100 characters or less.",
+    "departmentRequired": "Department is required.",
+    "departmentMax": "Department must be 100 characters or less.",
+    "idRequired": "ID is required."
+  }
+}
