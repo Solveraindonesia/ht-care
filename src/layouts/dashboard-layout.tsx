@@ -48,13 +48,13 @@ const sidebarNavItems = [
   },
   {
     titleKey: 'scanBorrow',
-    href: '/scan-pinjam',
+    href: '/scan-borrow',
     icon: ScanLine,
     sectionKey: 'transaction'
   },
   {
     titleKey: 'scanReturn',
-    href: '/scan-kembali',
+    href: '/scan-return',
     icon: RotateCcw,
     sectionKey: 'transaction'
   },
@@ -65,8 +65,8 @@ const sidebarNavItems = [
     sectionKey: 'report'
   },
   {
-    titleKey: 'report',
-    href: '/laporan',
+    titleKey: 'reportsAnalytics',
+    href: '/reports-analytics',
     icon: BarChart,
     sectionKey: 'report'
   },

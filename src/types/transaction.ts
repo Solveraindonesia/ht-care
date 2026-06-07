@@ -50,3 +50,15 @@ export interface ReturnPayload {
   htCode: string
   returnCondition: HtCondition
 }
+
+export interface TransactionHistoryItem {
+  id: string
+  htCode: string
+  brandType: string
+  borrowerName: string
+  borrowerCode: string
+  department: string
+  borrowTime: string
+  returnTime: string | null
+  status: TransactionStatus
+}

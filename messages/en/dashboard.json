@@ -14,5 +14,19 @@
   "status": {
     "borrowed": "Borrowed",
     "completed": "Completed"
+  },
+  "analytics": {
+    "title": "Reports & Analytics",
+    "subtitle": "Overview of RF device utilization and status.",
+    "loansTitle": "Loans",
+    "loansSubtitle": "Monthly Trends",
+    "distributionTitle": "Division Distribution",
+    "distributionSubtitle": "HT Usage by Dept",
+    "conditionTitle": "Condition Status",
+    "conditionSubtitle": "Device Health",
+    "exportTitle": "Generate comprehensive reports for management review.",
+    "exportPdf": "Download PDF",
+    "exportExcel": "Export Excel",
+    "printReport": "Print Report"
   }
 }

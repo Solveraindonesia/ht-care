@@ -14,5 +14,19 @@
   "status": {
     "borrowed": "Dipinjam",
     "completed": "Selesai"
+  },
+  "analytics": {
+    "title": "Laporan & Analitik",
+    "subtitle": "Tinjauan umum penggunaan dan status unit HT.",
+    "loansTitle": "Peminjaman",
+    "loansSubtitle": "Tren Bulanan",
+    "distributionTitle": "Distribusi Divisi",
+    "distributionSubtitle": "Penggunaan HT per Divisi",
+    "conditionTitle": "Status Kondisi",
+    "conditionSubtitle": "Kesehatan Perangkat",
+    "exportTitle": "Hasilkan laporan komprehensif untuk ditinjau manajemen.",
+    "exportPdf": "Unduh PDF",
+    "exportExcel": "Ekspor Excel",
+    "printReport": "Cetak Laporan"
   }
 }

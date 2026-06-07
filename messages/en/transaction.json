@@ -54,5 +54,27 @@
     "borrowDescription": "Scan an HT barcode or enter a code manually in the left panel to start borrowing.",
     "returnTitle": "No HT Scanned Yet",
     "returnDescription": "Scan an HT barcode or enter a code manually in the left panel to process a return."
+  },
+  "history": {
+    "title": "Transaction Log History",
+    "description": "Complete list of borrowing and returning history of HT units.",
+    "table": {
+      "transactionId": "Transaction ID",
+      "htCode": "HT Code",
+      "brandType": "Brand / Type",
+      "borrower": "Borrower",
+      "borrowTime": "Borrow Time",
+      "returnTime": "Return Time",
+      "status": "Status"
+    },
+    "status": {
+      "borrowed": "Borrowed",
+      "returned": "Completed"
+    },
+    "feedback": {
+      "loading": "Loading transaction history...",
+      "loadError": "Failed to load transaction history.",
+      "empty": "No transaction history."
+    }
   }
 }

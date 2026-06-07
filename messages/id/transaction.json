@@ -54,5 +54,27 @@
     "borrowDescription": "Scan barcode HT atau masukkan kode secara manual di panel sebelah kiri untuk memulai peminjaman.",
     "returnTitle": "Belum Ada HT Dipindai",
     "returnDescription": "Scan barcode HT atau masukkan kode secara manual di panel sebelah kiri untuk memproses pengembalian."
+  },
+  "history": {
+    "title": "Riwayat Log Transaksi",
+    "description": "Daftar lengkap riwayat peminjaman dan pengembalian unit HT.",
+    "table": {
+      "transactionId": "ID Transaksi",
+      "htCode": "Kode HT",
+      "brandType": "Merk / Tipe",
+      "borrower": "Peminjam",
+      "borrowTime": "Waktu Pinjam",
+      "returnTime": "Waktu Kembali",
+      "status": "Status"
+    },
+    "status": {
+      "borrowed": "Dipinjam",
+      "returned": "Selesai"
+    },
+    "feedback": {
+      "loading": "Memuat riwayat transaksi...",
+      "loadError": "Gagal memuat riwayat transaksi.",
+      "empty": "Tidak ada riwayat transaksi."
+    }
   }
 }
