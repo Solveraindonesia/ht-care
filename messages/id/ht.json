@@ -25,7 +25,10 @@
   },
   "condition": {
     "good": "Baik",
-    "broken": "Rusak"
+    "light_damage": "Rusak Ringan",
+    "heavy_damage": "Rusak Berat",
+    "lost": "Hilang",
+    "other": "Lainnya"
   },
   "status": {
     "available": "Tersedia",

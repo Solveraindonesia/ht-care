@@ -1,0 +1,24 @@
+# Phase 4: Core Transaction — Task Tracker
+
+- `[x]` Install `html5-qrcode`
+- `[x]` Types: `src/types/transaction.ts`
+- `[x]` Schemas: `src/schemas/transaction.schema.ts`
+- `[x]` API Routes
+  - `[x]` `GET /api/borrowers/available`
+  - `[x]` `GET /api/ht/code/[code]`
+  - `[x]` `GET /api/transactions/active/[htCode]`
+  - `[x]` `POST /api/transactions/borrow`
+  - `[x]` `POST /api/transactions/return`
+- `[x]` Services: `src/services/transaction.service.ts`
+- `[x]` Hooks: `src/hooks/use-transactions.ts`
+- `[x]` Feature Components
+  - `[x]` `src/features/transactions/barcode-scanner.tsx`
+  - `[x]` `src/features/transactions/scan-input.tsx`
+  - `[x]` `src/features/transactions/borrow-form.tsx`
+  - `[x]` `src/features/transactions/return-form.tsx`
+- `[x]` Pages
+  - `[x]` `src/app/(dashboard)/scan-pinjam/page.tsx`
+  - `[x]` `src/app/(dashboard)/scan-kembali/page.tsx`
+- `[x]` i18n: `messages/id/transaction.json` & `messages/en/transaction.json`
+- `[x]` Global: Wire Sonner `<Toaster />` + register i18n namespace
+- `[/]` Verification: `npm run build`

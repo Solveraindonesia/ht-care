@@ -13,6 +13,7 @@ import { getHtFormSchema } from '@/schemas/ht.schema'
 
 import type { HtFormData } from '@/schemas/ht.schema'
 import type { HtItem } from '@/types/ht'
+import { HT_CONDITIONS } from '@/types/ht'
 import type { SubmitHandler } from 'react-hook-form'
 
 const DEFAULT_HT_FORM_VALUES: HtFormData = {
@@ -112,8 +113,11 @@ export function HtForm({ open, item, isLoading, onOpenChange, onSubmit }: HtForm
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="GOOD">{t('condition.good')}</SelectItem>
-                    <SelectItem value="BROKEN">{t('condition.broken')}</SelectItem>
+                    {HT_CONDITIONS.map((cond) => (
+                      <SelectItem key={cond} value={cond}>
+                        {t(`condition.${cond.toLowerCase()}`)}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
               )}

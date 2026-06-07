@@ -79,7 +79,10 @@ model VerificationToken {
 
 enum HTCondition {
   GOOD
-  BROKEN
+  LIGHT_DAMAGE
+  HEAVY_DAMAGE
+  LOST
+  OTHER
 }
 
 enum HTStatus {

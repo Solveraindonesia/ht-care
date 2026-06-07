@@ -1,0 +1,58 @@
+{
+  "borrow": {
+    "title": "Scan Borrow",
+    "description": "Scan HT barcode or enter HT code manually to borrow.",
+    "selectBorrower": "Select Borrower",
+    "selectBorrowerPlaceholder": "Select a borrower...",
+    "submit": "Process Borrow",
+    "success": "HT borrowed successfully.",
+    "errorAlreadyBorrowed": "This HT is already borrowed and cannot be borrowed again.",
+    "errorGeneral": "Failed to process borrow transaction."
+  },
+  "return": {
+    "title": "Scan Return",
+    "description": "Scan HT barcode or enter HT code manually to return.",
+    "selectCondition": "Return Condition",
+    "selectConditionPlaceholder": "Select condition...",
+    "submit": "Process Return",
+    "success": "HT returned successfully.",
+    "errorNotBorrowed": "This HT is not currently borrowed.",
+    "errorGeneral": "Failed to process return transaction."
+  },
+  "scanner": {
+    "title": "Scan Barcode",
+    "camera": "Camera",
+    "manual": "Manual Input",
+    "placeholder": "Enter HT code (e.g., HT-001)",
+    "submit": "Search",
+    "permissionDenied": "Camera access denied. Please allow camera access in your browser settings.",
+    "startCamera": "Start Camera",
+    "stopCamera": "Stop Camera",
+    "viewfinderHint": "Press the button below to start the camera"
+  },
+  "detail": {
+    "htInfo": "HT Information",
+    "htInfoDescription": "Details of the HT to be borrowed.",
+    "transactionInfo": "Transaction Information",
+    "transactionInfoDescription": "Active borrow transaction details.",
+    "htCode": "HT Code",
+    "brandType": "Brand / Type",
+    "condition": "Condition",
+    "status": "Status",
+    "borrower": "Borrower",
+    "borrowTime": "Borrow Time"
+  },
+  "tips": {
+    "title": "Usage Tips",
+    "tip1": "Make sure the HT barcode is clearly visible in front of the camera.",
+    "tip2": "Use manual input if the barcode cannot be read.",
+    "tip3": "An HT that is currently borrowed cannot be borrowed again.",
+    "returnTip": "Select the HT condition upon return (Good, Light Damage, Heavy Damage, Lost, etc)."
+  },
+  "empty": {
+    "borrowTitle": "No HT Scanned Yet",
+    "borrowDescription": "Scan an HT barcode or enter a code manually in the left panel to start borrowing.",
+    "returnTitle": "No HT Scanned Yet",
+    "returnDescription": "Scan an HT barcode or enter a code manually in the left panel to process a return."
+  }
+}

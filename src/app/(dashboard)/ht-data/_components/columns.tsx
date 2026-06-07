@@ -51,7 +51,7 @@ export function useHtColumns({ onEdit, onDelete }: UseHtColumnsProps): ColumnDef
         header: t('table.condition'),
         cell: ({ row }) => {
           const item = row.original
-          return <HtConditionBadge condition={item.condition} label={item.condition === 'GOOD' ? t('condition.good') : t('condition.broken')} />
+          return <HtConditionBadge condition={item.condition} label={t(`condition.${item.condition.toLowerCase()}`)} />
         }
       },
       {

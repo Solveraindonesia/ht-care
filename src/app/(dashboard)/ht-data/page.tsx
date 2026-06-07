@@ -40,7 +40,7 @@ export default function DataHtPage(): React.JSX.Element {
         item.htCode,
         barcode,
         item.brandType,
-        t(`condition.${item.condition === 'GOOD' ? 'good' : 'broken'}`),
+        t(`condition.${item.condition.toLowerCase()}`),
         t(`status.${item.status === 'AVAILABLE' ? 'available' : 'borrowed'}`)
       ]
         .join(' ')

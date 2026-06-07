@@ -1,0 +1,58 @@
+{
+  "borrow": {
+    "title": "Scan Pinjam",
+    "description": "Scan barcode HT atau masukkan kode HT secara manual untuk meminjam.",
+    "selectBorrower": "Pilih Peminjam",
+    "selectBorrowerPlaceholder": "Pilih peminjam...",
+    "submit": "Proses Peminjaman",
+    "success": "HT berhasil dipinjamkan.",
+    "errorAlreadyBorrowed": "HT ini sedang dipinjam dan tidak bisa dipinjamkan lagi.",
+    "errorGeneral": "Gagal memproses peminjaman."
+  },
+  "return": {
+    "title": "Scan Kembali",
+    "description": "Scan barcode HT atau masukkan kode HT secara manual untuk mengembalikan.",
+    "selectCondition": "Kondisi Pengembalian",
+    "selectConditionPlaceholder": "Pilih kondisi...",
+    "submit": "Proses Pengembalian",
+    "success": "HT berhasil dikembalikan.",
+    "errorNotBorrowed": "HT ini tidak sedang dipinjam.",
+    "errorGeneral": "Gagal memproses pengembalian."
+  },
+  "scanner": {
+    "title": "Scan Barcode",
+    "camera": "Kamera",
+    "manual": "Input Manual",
+    "placeholder": "Masukkan kode HT (contoh: HT-001)",
+    "submit": "Cari",
+    "permissionDenied": "Akses kamera ditolak. Silakan izinkan akses kamera di pengaturan browser.",
+    "startCamera": "Mulai Kamera",
+    "stopCamera": "Hentikan Kamera",
+    "viewfinderHint": "Tekan tombol di bawah untuk memulai kamera"
+  },
+  "detail": {
+    "htInfo": "Informasi HT",
+    "htInfoDescription": "Detail HT yang akan dipinjam.",
+    "transactionInfo": "Informasi Transaksi",
+    "transactionInfoDescription": "Detail transaksi peminjaman aktif.",
+    "htCode": "Kode HT",
+    "brandType": "Merk / Tipe",
+    "condition": "Kondisi",
+    "status": "Status",
+    "borrower": "Peminjam",
+    "borrowTime": "Waktu Pinjam"
+  },
+  "tips": {
+    "title": "Tips Penggunaan",
+    "tip1": "Pastikan barcode HT terlihat jelas di depan kamera.",
+    "tip2": "Gunakan input manual jika barcode tidak terbaca.",
+    "tip3": "HT yang sedang dipinjam tidak bisa dipinjamkan lagi.",
+    "returnTip": "Pilih kondisi HT saat pengembalian (Baik, Rusak Ringan, Rusak Berat, Hilang, dll)."
+  },
+  "empty": {
+    "borrowTitle": "Belum Ada HT Dipindai",
+    "borrowDescription": "Scan barcode HT atau masukkan kode secara manual di panel sebelah kiri untuk memulai peminjaman.",
+    "returnTitle": "Belum Ada HT Dipindai",
+    "returnDescription": "Scan barcode HT atau masukkan kode secara manual di panel sebelah kiri untuk memproses pengembalian."
+  }
+}

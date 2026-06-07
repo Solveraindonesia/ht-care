@@ -1,4 +1,4 @@
-export const HT_CONDITIONS = ['GOOD', 'BROKEN'] as const
+export const HT_CONDITIONS = ['GOOD', 'LIGHT_DAMAGE', 'HEAVY_DAMAGE', 'LOST', 'OTHER'] as const
 export const HT_STATUSES = ['AVAILABLE', 'BORROWED'] as const
 
 export type HtCondition = (typeof HT_CONDITIONS)[number]

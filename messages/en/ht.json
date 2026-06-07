@@ -25,7 +25,10 @@
   },
   "condition": {
     "good": "Good",
-    "broken": "Broken"
+    "light_damage": "Light Damage",
+    "heavy_damage": "Heavy Damage",
+    "lost": "Lost",
+    "other": "Other"
   },
   "status": {
     "available": "Available",
