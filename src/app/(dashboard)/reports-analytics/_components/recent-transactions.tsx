@@ -16,7 +16,7 @@ interface RecentTransactionsProps {
 }
 
 export function RecentTransactions({ transactions = [], isLoading }: RecentTransactionsProps): React.JSX.Element {
-  const t = useTranslations('dashboard')
+  const t = useTranslations('report')
 
   if (isLoading) {
     return (

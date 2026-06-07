@@ -2,7 +2,7 @@
 
 import { Card } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
-import type { DivisionDistribution, MonthlyTrendItem } from '@/types/dashboard'
+import type { DivisionDistribution, MonthlyTrendItem } from '@/types/report'
 import { BarChart, PieChart, TrendingUp } from 'lucide-react'
 import { useTranslations } from 'use-intl'
 
@@ -21,7 +21,7 @@ export function AnalyticsBento({
   totalCount = 0,
   isLoading
 }: AnalyticsBentoProps): React.JSX.Element {
-  const t = useTranslations('dashboard')
+  const t = useTranslations('report')
 
   // Loading state skeleton
   if (isLoading) {

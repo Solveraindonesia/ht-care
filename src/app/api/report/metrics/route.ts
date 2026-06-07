@@ -1,5 +1,5 @@
 import { prisma } from '@/lib/prisma'
-import type { DashboardData } from '@/types/dashboard'
+import type { ReportData } from '@/types/report'
 import type { TransactionHistoryItem } from '@/types/transaction'
 import { createServerErrorResponse, createSuccessResponse, requireAuthenticatedSession } from '@/utils/api-route'
 
@@ -121,7 +121,7 @@ export async function GET(): Promise<Response> {
       count: t.count
     }))
 
-    const dashboardData: DashboardData = {
+    const reportData: ReportData = {
       metrics: {
         total,
         available,
@@ -133,8 +133,8 @@ export async function GET(): Promise<Response> {
       monthlyTrends
     }
 
-    return createSuccessResponse(dashboardData, 'Dashboard data loaded successfully.')
+    return createSuccessResponse(reportData, 'Report data loaded successfully.')
   } catch (error) {
-    return createServerErrorResponse(error, 'Failed to load dashboard metrics.')
+    return createServerErrorResponse(error, 'Failed to load report metrics.')
   }
 }

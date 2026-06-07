@@ -1,6 +1,6 @@
 import type { TransactionHistoryItem } from './transaction'
 
-export interface DashboardMetrics {
+export interface ReportMetrics {
   total: number
   available: number
   borrowed: number
@@ -18,8 +18,8 @@ export interface MonthlyTrendItem {
   count: number
 }
 
-export interface DashboardData {
-  metrics: DashboardMetrics
+export interface ReportData {
+  metrics: ReportMetrics
   recentTransactions: TransactionHistoryItem[]
   divisionDistribution: DivisionDistribution[]
   monthlyTrends: MonthlyTrendItem[]

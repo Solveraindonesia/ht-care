@@ -1,17 +1,17 @@
 'use client'
 
 import { Alert, AlertDescription } from '@/components/ui/alert'
-import { useDashboardData } from '@/hooks/use-dashboard'
+import { useReportData } from '@/hooks/use-report'
 import { AlertCircle, CalendarRange } from 'lucide-react'
 import { useTranslations } from 'use-intl'
 import { AnalyticsBento } from './_components/analytics-bento'
-import { DashboardMetrics } from './_components/dashboard-metrics'
 import { ExportActions } from './_components/export-actions'
+import { ReportMetrics } from './_components/metrics'
 import { RecentTransactions } from './_components/recent-transactions'
 
-export default function DashboardPage(): React.JSX.Element {
-  const t = useTranslations('dashboard')
-  const { data, isLoading, isError, error } = useDashboardData()
+export default function ReportPage(): React.JSX.Element {
+  const t = useTranslations('report')
+  const { data, isLoading, isError, error } = useReportData()
 
   return (
     <div className="animate-in fade-in flex w-full flex-col gap-6 duration-500">
@@ -33,12 +33,12 @@ export default function DashboardPage(): React.JSX.Element {
       {isError && (
         <Alert variant="destructive" className="rounded-2xl">
           <AlertCircle className="size-4" />
-          <AlertDescription>{error instanceof Error ? error.message : 'Failed to load dashboard data.'}</AlertDescription>
+          <AlertDescription>{error instanceof Error ? error.message : 'Failed to load report data.'}</AlertDescription>
         </Alert>
       )}
 
       {/* Metrics Summary Cards */}
-      <DashboardMetrics metrics={data?.metrics} isLoading={isLoading} />
+      <ReportMetrics metrics={data?.metrics} isLoading={isLoading} />
 
       {/* Bento Grid Analytics */}
       <AnalyticsBento

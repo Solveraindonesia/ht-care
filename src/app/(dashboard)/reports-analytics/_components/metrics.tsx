@@ -2,17 +2,17 @@
 
 import { Card, CardContent } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
-import type { DashboardMetrics as MetricsType } from '@/types/dashboard'
+import type { ReportMetrics as MetricsType } from '@/types/report'
 import { CheckCircle2, History, RadioReceiver, Wrench } from 'lucide-react'
 import { useTranslations } from 'use-intl'
 
-interface DashboardMetricsProps {
+interface ReportMetricsProps {
   metrics?: MetricsType
   isLoading: boolean
 }
 
-export function DashboardMetrics({ metrics, isLoading }: DashboardMetricsProps): React.JSX.Element {
-  const t = useTranslations('dashboard')
+export function ReportMetrics({ metrics, isLoading }: ReportMetricsProps): React.JSX.Element {
+  const t = useTranslations('report')
 
   const cards = [
     {

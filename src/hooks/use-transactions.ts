@@ -1,6 +1,6 @@
 import { BORROWERS_QUERY_KEY } from '@/hooks/use-borrowers'
-import { DASHBOARD_DATA_QUERY_KEY } from '@/hooks/use-dashboard'
 import { HT_ITEMS_QUERY_KEY } from '@/hooks/use-ht-items'
+import { REPORT_DATA_QUERY_KEY } from '@/hooks/use-report'
 import { borrowHt, getActiveTransaction, getAvailableBorrowers, getHtByCode, getTransactionHistory, returnHt } from '@/services/transaction.service'
 import type { Borrower } from '@/types/borrower'
 import type { HtItem } from '@/types/ht'
@@ -46,7 +46,7 @@ export function useBorrowHt(): UseMutationResult<Transaction, Error, BorrowPaylo
         queryClient.invalidateQueries({ queryKey: HT_ITEMS_QUERY_KEY }),
         queryClient.invalidateQueries({ queryKey: BORROWERS_QUERY_KEY }),
         queryClient.invalidateQueries({ queryKey: AVAILABLE_BORROWERS_QUERY_KEY }),
-        queryClient.invalidateQueries({ queryKey: DASHBOARD_DATA_QUERY_KEY }),
+        queryClient.invalidateQueries({ queryKey: REPORT_DATA_QUERY_KEY }),
         queryClient.invalidateQueries({ queryKey: TRANSACTION_HISTORY_QUERY_KEY })
       ])
     }
@@ -63,7 +63,7 @@ export function useReturnHt(): UseMutationResult<Transaction, Error, ReturnPaylo
         queryClient.invalidateQueries({ queryKey: HT_ITEMS_QUERY_KEY }),
         queryClient.invalidateQueries({ queryKey: BORROWERS_QUERY_KEY }),
         queryClient.invalidateQueries({ queryKey: AVAILABLE_BORROWERS_QUERY_KEY }),
-        queryClient.invalidateQueries({ queryKey: DASHBOARD_DATA_QUERY_KEY }),
+        queryClient.invalidateQueries({ queryKey: REPORT_DATA_QUERY_KEY }),
         queryClient.invalidateQueries({ queryKey: TRANSACTION_HISTORY_QUERY_KEY })
       ])
     }

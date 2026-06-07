@@ -4,7 +4,7 @@ import { FileSpreadsheet, FileText, Printer } from 'lucide-react'
 import { useTranslations } from 'use-intl'
 
 export function ExportActions(): React.JSX.Element {
-  const t = useTranslations('dashboard')
+  const t = useTranslations('report')
 
   const handlePrint = (): void => {
     window.print()

@@ -10,7 +10,7 @@ export default getRequestConfig(async () => {
     messages: {
       common: (await import(`../../messages/${locale}/common.json`)).default,
       auth: (await import(`../../messages/${locale}/auth.json`)).default,
-      dashboard: (await import(`../../messages/${locale}/dashboard.json`)).default,
+      report: (await import(`../../messages/${locale}/report.json`)).default,
       sidebar: (await import(`../../messages/${locale}/sidebar.json`)).default,
       ht: (await import(`../../messages/${locale}/ht.json`)).default,
       borrower: (await import(`../../messages/${locale}/borrower.json`)).default,
