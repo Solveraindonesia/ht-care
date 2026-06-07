@@ -22,13 +22,13 @@ const sidebarNavItems = [
   },
   {
     titleKey: 'dataHt',
-    href: '/data-ht',
+    href: '/ht-data',
     icon: RadioReceiver,
     sectionKey: 'masterData'
   },
   {
     titleKey: 'dataBorrower',
-    href: '/data-peminjam',
+    href: '/borrower-data',
     icon: Users,
     sectionKey: 'masterData'
   },
