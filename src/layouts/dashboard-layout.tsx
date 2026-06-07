@@ -8,11 +8,9 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 import { cn } from '@/lib/utils'
 import {
   BarChart,
-  Bell,
   ChevronLeft,
   ChevronRight,
   FileText,
-  HelpCircle,
   LayoutDashboard,
   Menu,
   RadioReceiver,
@@ -187,7 +185,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
                 <SheetDescription className="sr-only">Main navigation for the application</SheetDescription>
                 <div className="mb-2 flex items-center gap-3 border-b border-white/10 px-6 py-6">
                   <RadioReceiver className="h-7 w-7 text-white" />
-                  <h1 className="text-2xl leading-tight font-bold tracking-tight text-white">SIP-HT</h1>
+                  <h1 className="text-2xl leading-tight font-bold tracking-tight text-white">HT-CARE</h1>
                 </div>
 
                 <ScrollArea className="min-h-0 w-full flex-1">
@@ -242,13 +240,6 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
               <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
               <Input className="bg-card border-border/50 focus-visible:ring-primary h-10 rounded-xl pl-10" placeholder="Search..." type="text" />
             </div>
-
-            <button className="text-muted-foreground hover:text-primary hover:bg-muted hidden rounded-full p-2 transition-colors sm:block">
-              <Bell className="h-5 w-5" />
-            </button>
-            <button className="text-muted-foreground hover:text-primary hover:bg-muted hidden rounded-full p-2 transition-colors sm:block">
-              <HelpCircle className="h-5 w-5" />
-            </button>
 
             <div className="border-border ml-2 flex items-center gap-2 border-l pl-4">
               <LanguageSwitcher />

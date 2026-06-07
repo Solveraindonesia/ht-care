@@ -1,0 +1,49 @@
+{
+  "title": "System Settings",
+  "subtitle": "Manage your general preferences, user profile, and password security.",
+  "tabs": {
+    "general": "General",
+    "profile": "Profile",
+    "password": "Change Password"
+  },
+  "general": {
+    "title": "General Preferences",
+    "subtitle": "Configure the application interface language and visual theme.",
+    "language": "Application Language",
+    "languageDesc": "Select the language used for the user interface.",
+    "theme": "Visual Theme",
+    "themeDesc": "Select a visual theme that is comfortable for your eyes.",
+    "themes": {
+      "light": "Light Mode",
+      "dark": "Dark Mode",
+      "system": "System Default"
+    }
+  },
+  "profile": {
+    "title": "User Profile",
+    "subtitle": "Manage your personal profile information.",
+    "name_label": "Full Name",
+    "namePlaceholder": "Enter your full name",
+    "email_label": "Email Address",
+    "role_label": "User Role",
+    "roleDesc": "Your account role is managed by the system administrator.",
+    "save": "Save Changes",
+    "saving": "Saving...",
+    "success": "Profile updated successfully."
+  },
+  "password": {
+    "title": "Password Security",
+    "subtitle": "Change your password regularly to maintain account security.",
+    "current": "Current Password",
+    "currentPlaceholder": "Enter current password",
+    "new": "New Password",
+    "newPlaceholder": "Enter new password (min. 8 characters)",
+    "confirm": "Confirm New Password",
+    "confirmPlaceholder": "Re-enter new password",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "save": "Update Password",
+    "saving": "Updating...",
+    "success": "Password updated successfully."
+  }
+}

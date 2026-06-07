@@ -1,0 +1,49 @@
+{
+  "title": "Pengaturan Sistem",
+  "subtitle": "Kelola preferensi umum, profil pengguna, dan keamanan kata sandi Anda.",
+  "tabs": {
+    "general": "Umum",
+    "profile": "Profil",
+    "password": "Ubah Password"
+  },
+  "general": {
+    "title": "Preferensi Umum",
+    "subtitle": "Atur bahasa antarmuka dan tema tampilan aplikasi Anda.",
+    "language": "Bahasa Aplikasi",
+    "languageDesc": "Pilih bahasa yang digunakan untuk antarmuka pengguna.",
+    "theme": "Tema Tampilan",
+    "themeDesc": "Pilih tema tampilan yang nyaman untuk mata Anda.",
+    "themes": {
+      "light": "Mode Terang",
+      "dark": "Mode Gelap",
+      "system": "Default Sistem"
+    }
+  },
+  "profile": {
+    "title": "Profil Pengguna",
+    "subtitle": "Kelola informasi profil pribadi Anda.",
+    "name_label": "Nama Lengkap",
+    "namePlaceholder": "Masukkan nama lengkap Anda",
+    "email_label": "Alamat Email",
+    "role_label": "Peran Pengguna",
+    "roleDesc": "Peran akun Anda diatur oleh administrator sistem.",
+    "save": "Simpan Perubahan",
+    "saving": "Menyimpan...",
+    "success": "Profil berhasil diperbarui."
+  },
+  "password": {
+    "title": "Keamanan Kata Sandi",
+    "subtitle": "Ganti kata sandi Anda secara berkala untuk menjaga keamanan akun.",
+    "current": "Kata Sandi Saat Ini",
+    "currentPlaceholder": "Masukkan kata sandi saat ini",
+    "new": "Kata Sandi Baru",
+    "newPlaceholder": "Masukkan kata sandi baru (min. 8 karakter)",
+    "confirm": "Konfirmasi Kata Sandi Baru",
+    "confirmPlaceholder": "Masukkan kembali kata sandi baru",
+    "showPassword": "Tampilkan password",
+    "hidePassword": "Sembunyikan password",
+    "save": "Perbarui Kata Sandi",
+    "saving": "Memperbarui...",
+    "success": "Kata sandi berhasil diperbarui."
+  }
+}
