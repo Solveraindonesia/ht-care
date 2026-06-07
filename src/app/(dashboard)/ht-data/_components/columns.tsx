@@ -22,15 +22,6 @@ export function useHtColumns({ onEdit, onDelete }: UseHtColumnsProps): ColumnDef
   return useMemo(
     () => [
       {
-        accessorKey: 'htCode',
-        header: t('table.htCode'),
-        cell: ({ row }) => <span className="text-primary font-mono font-medium">{row.original.htCode}</span>
-      },
-      {
-        accessorKey: 'brandType',
-        header: t('table.brandType')
-      },
-      {
         id: 'barcode',
         header: t('table.barcode'),
         cell: ({ row }) => {
@@ -45,6 +36,15 @@ export function useHtColumns({ onEdit, onDelete }: UseHtColumnsProps): ColumnDef
             />
           )
         }
+      },
+      {
+        accessorKey: 'htCode',
+        header: t('table.htCode'),
+        cell: ({ row }) => <span className="text-primary font-mono font-medium">{row.original.htCode}</span>
+      },
+      {
+        accessorKey: 'brandType',
+        header: t('table.brandType')
       },
       {
         accessorKey: 'condition',

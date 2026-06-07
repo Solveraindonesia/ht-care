@@ -21,19 +21,6 @@ export function useBorrowerColumns({ onEdit, onDelete }: UseBorrowerColumnsProps
   return useMemo(
     () => [
       {
-        accessorKey: 'borrowerCode',
-        header: t('table.borrowerCode'),
-        cell: ({ row }) => <span className="text-primary font-mono font-medium">{row.original.borrowerCode}</span>
-      },
-      {
-        accessorKey: 'fullName',
-        header: t('table.fullName')
-      },
-      {
-        accessorKey: 'department',
-        header: t('table.department')
-      },
-      {
         id: 'barcode',
         header: t('table.barcode'),
         cell: ({ row }) => {
@@ -48,6 +35,19 @@ export function useBorrowerColumns({ onEdit, onDelete }: UseBorrowerColumnsProps
             />
           )
         }
+      },
+      {
+        accessorKey: 'borrowerCode',
+        header: t('table.borrowerCode'),
+        cell: ({ row }) => <span className="text-primary font-mono font-medium">{row.original.borrowerCode}</span>
+      },
+      {
+        accessorKey: 'fullName',
+        header: t('table.fullName')
+      },
+      {
+        accessorKey: 'department',
+        header: t('table.department')
       },
       {
         id: 'actions',
