@@ -1,13 +1,13 @@
 'use client'
 
 import { Alert, AlertDescription } from '@/components/ui/alert'
-import { AnalyticsBento } from '@/features/dashboard/analytics-bento'
-import { DashboardMetrics } from '@/features/dashboard/dashboard-metrics'
-import { ExportActions } from '@/features/dashboard/export-actions'
-import { RecentTransactions } from '@/features/dashboard/recent-transactions'
 import { useDashboardData } from '@/hooks/use-dashboard'
 import { AlertCircle, CalendarRange } from 'lucide-react'
 import { useTranslations } from 'use-intl'
+import { AnalyticsBento } from './_components/analytics-bento'
+import { DashboardMetrics } from './_components/dashboard-metrics'
+import { ExportActions } from './_components/export-actions'
+import { RecentTransactions } from './_components/recent-transactions'
 
 export default function DashboardPage(): React.JSX.Element {
   const t = useTranslations('dashboard')

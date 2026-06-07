@@ -3,10 +3,10 @@
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 
+import { BarcodeScanner } from '@/components/transactions/barcode-scanner'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
-import { BarcodeScanner } from '@/features/transactions/barcode-scanner'
 import { cn } from '@/lib/utils'
 import { Camera, Keyboard, Loader2, Search } from 'lucide-react'
 

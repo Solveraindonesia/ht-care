@@ -3,10 +3,10 @@
 import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
+import { BorrowForm } from '@/components/transactions/borrow-form'
+import { ScanInput } from '@/components/transactions/scan-input'
 import { Card, CardContent } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
-import { BorrowForm } from '@/features/transactions/borrow-form'
-import { ScanInput } from '@/features/transactions/scan-input'
 import { useHtByCode } from '@/hooks/use-transactions'
 import { CheckCircle2, Radio, ScanLine } from 'lucide-react'
 import { toast } from 'sonner'
