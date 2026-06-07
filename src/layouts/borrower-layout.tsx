@@ -1,0 +1,213 @@
+'use client'
+
+import { LanguageSwitcher } from '@/components/shared/language-switcher'
+import { ThemeToggle } from '@/components/shared/theme-toggle'
+import { UserProfile } from '@/components/shared/user-profile'
+import { ScrollArea } from '@/components/ui/scroll-area'
+import { cn } from '@/lib/utils'
+import { BarChart, ChevronLeft, ChevronRight, FileText, LayoutDashboard, Menu, RadioReceiver, Settings } from 'lucide-react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import * as React from 'react'
+
+import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
+import { useTranslations } from 'next-intl'
+
+const sidebarNavItems = [
+  {
+    titleKey: 'borrowerDashboard',
+    href: '/borrower/dashboard',
+    icon: LayoutDashboard,
+    sectionKey: 'main'
+  },
+  {
+    titleKey: 'borrowerHistory',
+    href: '/borrower/history',
+    icon: FileText,
+    sectionKey: 'main'
+  },
+  {
+    titleKey: 'borrowerStats',
+    href: '/borrower/stats',
+    icon: BarChart,
+    sectionKey: 'main'
+  },
+  {
+    titleKey: 'borrowerSettings',
+    href: '/borrower/settings',
+    icon: Settings,
+    sectionKey: 'preferences'
+  }
+]
+
+interface BorrowerLayoutProps {
+  children: React.ReactNode
+}
+
+export function BorrowerLayout({ children }: BorrowerLayoutProps) {
+  const pathname = usePathname()
+  const tNav = useTranslations('sidebar.nav')
+  const tSection = useTranslations('sidebar.sections')
+  const [isCollapsed, setIsCollapsed] = React.useState(false)
+
+  return (
+    <div className="bg-background text-foreground flex min-h-screen">
+      {/* Sidebar */}
+      <aside
+        className={cn(
+          'bg-sidebar text-on-primary fixed top-0 left-0 z-50 hidden h-full flex-col shadow-xl transition-all duration-300 ease-in-out md:flex',
+          isCollapsed ? 'w-[80px]' : 'w-[220px]'
+        )}
+      >
+        <div
+          className={cn(
+            'mb-2 flex items-center border-b border-white/10 py-6 transition-all duration-300',
+            isCollapsed ? 'justify-center px-4' : 'gap-3 px-6'
+          )}
+        >
+          <RadioReceiver className="h-7 w-7 shrink-0 text-white" />
+          {!isCollapsed && (
+            <h1 className="animate-in fade-in truncate text-2xl leading-tight font-bold tracking-tight text-white duration-300">SIP-HT</h1>
+          )}
+        </div>
+
+        <ScrollArea className="min-h-0 w-full flex-1">
+          <nav className="flex w-full flex-col gap-1 pb-6">
+            {sidebarNavItems.map((item, index) => {
+              const isActive = pathname === item.href
+              const isFirstInSection = index === 0 || sidebarNavItems[index - 1].sectionKey !== item.sectionKey
+
+              const linkContent = (
+                <Link
+                  href={item.href}
+                  className={cn(
+                    'flex items-center gap-4 rounded-xl py-3 text-[13px] font-medium transition-all duration-300',
+                    isCollapsed ? 'mx-auto h-16 w-16 justify-center px-0' : 'px-4',
+                    isActive
+                      ? 'border-l-4 border-blue-400 bg-white/10 font-bold text-white'
+                      : 'border-l-4 border-transparent text-white/80 hover:bg-white/5 hover:text-white'
+                  )}
+                >
+                  <item.icon className="h-8 w-8 shrink-0" />
+                  {!isCollapsed && <span className="animate-in fade-in truncate duration-300">{tNav(item.titleKey)}</span>}
+                </Link>
+              )
+
+              return (
+                <div key={item.href} className="w-full">
+                  {isFirstInSection && !isCollapsed && (
+                    <p className="animate-in fade-in mt-6 mb-2 px-6 text-xs font-bold tracking-wider text-blue-300/80 uppercase duration-300">
+                      {tSection(item.sectionKey)}
+                    </p>
+                  )}
+                  {isFirstInSection && isCollapsed && <div className="mx-auto my-4 h-px w-8 bg-white/10 transition-all duration-300" />}
+                  <div className={cn('px-4', isCollapsed && 'px-0')}>
+                    {isCollapsed ? (
+                      <Tooltip>
+                        <TooltipTrigger asChild>{linkContent}</TooltipTrigger>
+                        <TooltipContent side="right" className="ml-2 border border-white/10 bg-slate-900 font-semibold text-white">
+                          {tNav(item.titleKey)}
+                        </TooltipContent>
+                      </Tooltip>
+                    ) : (
+                      linkContent
+                    )}
+                  </div>
+                </div>
+              )
+            })}
+          </nav>
+        </ScrollArea>
+
+        {/* Profile Section */}
+        <div className="mt-auto border-t border-white/10">
+          <UserProfile isCollapsed={isCollapsed} />
+        </div>
+      </aside>
+
+      {/* Main Content Canvas */}
+      <main
+        className={cn(
+          'bg-surface dark:bg-background flex min-h-screen w-full flex-1 flex-col transition-all duration-300 ease-in-out',
+          isCollapsed ? 'md:ml-[80px] md:w-[calc(100%-80px)]' : 'md:ml-[220px] md:w-[calc(100%-220px)]'
+        )}
+      >
+        {/* TopAppBar */}
+        <header className="bg-surface dark:bg-card border-border/50 sticky top-0 z-40 flex items-center justify-between border-b px-6 py-4 shadow-sm transition-colors duration-200">
+          <div className="flex items-center gap-4">
+            <Sheet>
+              <SheetTrigger asChild>
+                <button className="text-muted-foreground hover:text-primary md:hidden">
+                  <Menu className="h-6 w-6" />
+                </button>
+              </SheetTrigger>
+              <SheetContent side="left" className="bg-sidebar text-on-primary w-[220px] border-none p-0 outline-none">
+                <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+                <SheetDescription className="sr-only">Main navigation for the borrower application</SheetDescription>
+                <div className="mb-2 flex items-center gap-3 border-b border-white/10 px-6 py-6">
+                  <RadioReceiver className="h-7 w-7 text-white" />
+                  <h1 className="text-2xl leading-tight font-bold tracking-tight text-white">HT-CARE</h1>
+                </div>
+
+                <ScrollArea className="min-h-0 w-full flex-1">
+                  <nav className="flex w-full flex-col gap-1 pb-6">
+                    {sidebarNavItems.map((item, index) => {
+                      const isActive = pathname === item.href
+                      const isFirstInSection = index === 0 || sidebarNavItems[index - 1].sectionKey !== item.sectionKey
+
+                      return (
+                        <div key={item.href} className="w-full">
+                          {isFirstInSection && (
+                            <p className="mt-6 mb-2 px-6 text-xs font-bold tracking-wider text-blue-300/80 uppercase">{tSection(item.sectionKey)}</p>
+                          )}
+                          <div className="px-4">
+                            <Link
+                              href={item.href}
+                              className={cn(
+                                'flex items-center gap-4 rounded-xl px-4 py-3 text-[15px] font-medium transition-colors',
+                                isActive
+                                  ? 'border-l-4 border-blue-400 bg-white/10 font-bold text-white'
+                                  : 'border-l-4 border-transparent text-white/80 hover:bg-white/5 hover:text-white'
+                              )}
+                            >
+                              <item.icon className="h-5 w-5" />
+                              {tNav(item.titleKey)}
+                            </Link>
+                          </div>
+                        </div>
+                      )
+                    })}
+                  </nav>
+                </ScrollArea>
+                <div className="mt-auto border-t border-white/10">
+                  <UserProfile isCollapsed={false} />
+                </div>
+              </SheetContent>
+            </Sheet>
+
+            <button
+              onClick={() => setIsCollapsed(!isCollapsed)}
+              className="text-muted-foreground hover:text-primary hover:bg-muted mr-1 hidden rounded-lg p-1.5 transition-colors md:block"
+              title={isCollapsed ? 'Expand Sidebar' : 'Collapse Sidebar'}
+            >
+              {isCollapsed ? <ChevronRight className="h-5 w-5" /> : <ChevronLeft className="h-5 w-5" />}
+            </button>
+
+            <h2 className="text-primary dark:text-inverse-primary mr-4 truncate text-xl font-bold sm:text-2xl">HT-Care</h2>
+          </div>
+
+          <div className="flex items-center gap-2 sm:gap-4">
+            <div className="border-border ml-2 flex items-center gap-2 border-l pl-4">
+              <LanguageSwitcher />
+              <ThemeToggle />
+            </div>
+          </div>
+        </header>
+
+        {/* Dashboard Canvas (scaled for large screens) */}
+        <div className="mx-auto flex w-full max-w-[1440px] flex-1 flex-col p-6">{children}</div>
+      </main>
+    </div>
+  )
+}

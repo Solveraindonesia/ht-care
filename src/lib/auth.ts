@@ -24,26 +24,41 @@ export const authOptions: NextAuthOptions = {
           throw new Error('Missing credentials')
         }
 
+        // 1. Try to find in User table (Admin/Operator)
         const user = await prisma.user.findUnique({
           where: { email: credentials.email }
         })
 
-        if (!user || !user.password) {
-          throw new Error('Invalid credentials')
+        if (user && user.password) {
+          const isValid = await bcrypt.compare(credentials.password, user.password)
+          if (isValid) {
+            return {
+              id: user.id,
+              email: user.email,
+              name: user.name,
+              role: user.role
+            }
+          }
         }
 
-        const isValid = await bcrypt.compare(credentials.password, user.password)
+        // 2. Try to find in Borrower table (Borrowers)
+        const borrower = await prisma.borrower.findUnique({
+          where: { email: credentials.email }
+        })
 
-        if (!isValid) {
-          throw new Error('Invalid credentials')
+        if (borrower && borrower.password) {
+          const isValid = await bcrypt.compare(credentials.password, borrower.password)
+          if (isValid) {
+            return {
+              id: borrower.id,
+              email: borrower.email,
+              name: borrower.full_name,
+              role: 'BORROWER'
+            }
+          }
         }
 
-        return {
-          id: user.id,
-          email: user.email,
-          name: user.name,
-          role: user.role
-        }
+        throw new Error('Invalid credentials')
       }
     })
   ],

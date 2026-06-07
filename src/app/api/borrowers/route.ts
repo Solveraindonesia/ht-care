@@ -9,6 +9,7 @@ import {
   requireAuthenticatedSession,
   requireMasterDataAccess
 } from '@/utils/api-route'
+import bcrypt from 'bcryptjs'
 
 import type { Borrower } from '@/types/borrower'
 import type { Borrower as PrismaBorrower } from '../../../../generated/prisma/client'
@@ -22,6 +23,7 @@ function mapBorrower(borrower: PrismaBorrower): Borrower {
     barcode: borrower.barcode,
     fullName: borrower.full_name,
     department: borrower.department,
+    email: borrower.email,
     createdAt: borrower.createdAt.toISOString(),
     updatedAt: borrower.updatedAt.toISOString()
   }
@@ -35,7 +37,7 @@ function createBorrowerPrismaErrorResponse(error: unknown) {
   const code = getPrismaErrorCode(error)
 
   if (code === 'P2002') {
-    return createErrorResponse('Borrower code already exists.', 400)
+    return createErrorResponse('Borrower code or email already exists.', 400)
   }
 
   if (code === 'P2025') {
@@ -84,12 +86,16 @@ export async function POST(request: Request) {
       return createValidationErrorResponse(validation.error)
     }
 
+    const hashedPassword = await bcrypt.hash(validation.data.password, 10)
+
     const borrower = await prisma.borrower.create({
       data: {
         borrower_code: validation.data.borrowerCode,
-        barcode: getResolvedBarcode(validation.data.barcode, validation.data.borrowerCode),
+        barcode: getResolvedBarcode(validation.data.barcode as string | undefined, validation.data.borrowerCode),
         full_name: validation.data.fullName,
-        department: validation.data.department
+        department: validation.data.department,
+        email: validation.data.email,
+        password: hashedPassword
       }
     })
 
@@ -120,16 +126,30 @@ export async function PUT(request: Request) {
       return createValidationErrorResponse(validation.error)
     }
 
+    const updateData: {
+      borrower_code: string
+      barcode: string
+      full_name: string
+      department: string
+      email: string
+      password?: string
+    } = {
+      borrower_code: validation.data.borrowerCode,
+      barcode: getResolvedBarcode(validation.data.barcode as string | undefined, validation.data.borrowerCode),
+      full_name: validation.data.fullName,
+      department: validation.data.department,
+      email: validation.data.email
+    }
+
+    if (validation.data.password && validation.data.password.trim().length > 0) {
+      updateData.password = await bcrypt.hash(validation.data.password, 10)
+    }
+
     const borrower = await prisma.borrower.update({
       where: {
         id: validation.data.id
       },
-      data: {
-        borrower_code: validation.data.borrowerCode,
-        barcode: getResolvedBarcode(validation.data.barcode, validation.data.borrowerCode),
-        full_name: validation.data.fullName,
-        department: validation.data.department
-      }
+      data: updateData
     })
 
     return createSuccessResponse(mapBorrower(borrower), 'Borrower updated successfully.')

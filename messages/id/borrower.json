@@ -21,14 +21,20 @@
     "fullName": "Nama Lengkap",
     "fullNamePlaceholder": "Nama peminjam",
     "department": "Departemen",
-    "departmentPlaceholder": "Keamanan"
+    "departmentPlaceholder": "Keamanan",
+    "email": "Email",
+    "emailPlaceholder": "peminjam@email.com",
+    "password": "Kata Sandi",
+    "passwordPlaceholder": "Masukkan kata sandi",
+    "passwordPlaceholderEdit": "Kosongkan jika tidak ingin mengubah kata sandi"
   },
   "table": {
     "borrowerCode": "Kode Peminjam",
     "fullName": "Nama Lengkap",
     "department": "Departemen",
     "barcode": "Barcode",
-    "actions": "Aksi"
+    "actions": "Aksi",
+    "email": "Email"
   },
   "barcode": {
     "download": "Unduh Barcode",
@@ -64,6 +70,33 @@
     "fullNameMax": "Nama lengkap maksimal 100 karakter.",
     "departmentRequired": "Departemen wajib diisi.",
     "departmentMax": "Departemen maksimal 100 karakter.",
-    "idRequired": "ID wajib diisi."
+    "idRequired": "ID wajib diisi.",
+    "emailRequired": "Email wajib diisi.",
+    "emailInvalid": "Format email tidak valid.",
+    "passwordRequired": "Kata sandi wajib diisi.",
+    "passwordMin": "Kata sandi minimal 8 karakter."
+  },
+  "dashboard": {
+    "title": "Dashboard Peminjam",
+    "welcome": "Selamat Datang Kembali, {name}!",
+    "welcomeSubtitle": "Berikut adalah ringkasan peminjaman Handy Talky Anda.",
+    "totalBorrowed": "Total Dipinjam",
+    "currentlyActive": "Sedang Dipinjam",
+    "returnedCount": "Sudah Dikembalikan",
+    "recentTransactions": "Transaksi Peminjaman Terbaru Anda",
+    "noTransactions": "Belum ada riwayat transaksi peminjaman."
+  },
+  "history": {
+    "title": "Riwayat Pinjaman",
+    "subtitle": "Daftar lengkap seluruh transaksi peminjaman Handy Talky Anda."
+  },
+  "stats": {
+    "title": "Statistik Peminjaman",
+    "subtitle": "Tren penggunaan Handy Talky Anda selama beberapa bulan terakhir.",
+    "chartTitle": "Jumlah Pinjam per Bulan"
+  },
+  "settings": {
+    "title": "Pengaturan Akun",
+    "subtitle": "Kelola profil dan keamanan akun peminjam Anda."
   }
 }

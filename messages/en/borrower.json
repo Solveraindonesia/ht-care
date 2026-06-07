@@ -21,14 +21,20 @@
     "fullName": "Full Name",
     "fullNamePlaceholder": "Borrower name",
     "department": "Department",
-    "departmentPlaceholder": "Security"
+    "departmentPlaceholder": "Security",
+    "email": "Email",
+    "emailPlaceholder": "borrower@email.com",
+    "password": "Password",
+    "passwordPlaceholder": "Enter password",
+    "passwordPlaceholderEdit": "Leave empty to keep current password"
   },
   "table": {
     "borrowerCode": "Borrower Code",
     "fullName": "Full Name",
     "department": "Department",
     "barcode": "Barcode",
-    "actions": "Actions"
+    "actions": "Actions",
+    "email": "Email"
   },
   "barcode": {
     "download": "Download Barcode",
@@ -64,6 +70,33 @@
     "fullNameMax": "Full name must be 100 characters or less.",
     "departmentRequired": "Department is required.",
     "departmentMax": "Department must be 100 characters or less.",
-    "idRequired": "ID is required."
+    "idRequired": "ID is required.",
+    "emailRequired": "Email is required.",
+    "emailInvalid": "Invalid email address.",
+    "passwordRequired": "Password is required.",
+    "passwordMin": "Password must be at least 8 characters."
+  },
+  "dashboard": {
+    "title": "Borrower Dashboard",
+    "welcome": "Welcome Back, {name}!",
+    "welcomeSubtitle": "Here is a summary of your Handy Talky loans.",
+    "totalBorrowed": "Total Borrowed",
+    "currentlyActive": "Currently Active",
+    "returnedCount": "Returned Count",
+    "recentTransactions": "Your Recent Transactions",
+    "noTransactions": "No loan transaction history found."
+  },
+  "history": {
+    "title": "Loan History",
+    "subtitle": "Complete history of all your Handy Talky loan transactions."
+  },
+  "stats": {
+    "title": "Loan Statistics",
+    "subtitle": "Handy Talky usage trend over the past few months.",
+    "chartTitle": "Loans per Month"
+  },
+  "settings": {
+    "title": "Account Settings",
+    "subtitle": "Manage your borrower profile and account security."
   }
 }

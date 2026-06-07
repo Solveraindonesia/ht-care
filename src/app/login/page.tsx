@@ -3,7 +3,7 @@
 import { getLoginSchema, LoginFormData } from '@/schemas/auth'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { AlertCircle, Loader2, Lock, RadioReceiver, User } from 'lucide-react'
-import { signIn } from 'next-auth/react'
+import { getSession, signIn } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
@@ -45,7 +45,12 @@ export default function LoginPage() {
       setErrorMsg(t('error'))
       setIsLoading(false)
     } else {
-      router.push('/dashboard')
+      const session = await getSession()
+      if (session?.user?.role === 'BORROWER') {
+        router.push('/borrower/dashboard')
+      } else {
+        router.push('/dashboard')
+      }
       router.refresh()
     }
   }

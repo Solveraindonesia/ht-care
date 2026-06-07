@@ -5,6 +5,8 @@ export interface BorrowerFormData {
   barcode?: string
   fullName: string
   department: string
+  email: string
+  password?: string
 }
 
 interface BorrowerValidationMessages {
@@ -16,6 +18,10 @@ interface BorrowerValidationMessages {
   fullNameMax: string
   departmentRequired: string
   departmentMax: string
+  emailRequired: string
+  emailInvalid: string
+  passwordRequired: string
+  passwordMin: string
   idRequired: string
 }
 
@@ -32,6 +38,10 @@ const DEFAULT_BORROWER_VALIDATION_MESSAGES: BorrowerValidationMessages = {
   fullNameMax: 'Full name must be 100 characters or less.',
   departmentRequired: 'Department is required.',
   departmentMax: 'Department must be 100 characters or less.',
+  emailRequired: 'Email is required.',
+  emailInvalid: 'Invalid email address.',
+  passwordRequired: 'Password is required.',
+  passwordMin: 'Password must be at least 8 characters.',
   idRequired: 'ID is required.'
 }
 
@@ -45,37 +55,77 @@ function createOptionalBarcodeSchema(messages: BorrowerValidationMessages): z.Zo
     .optional()
 }
 
-function createBorrowerBaseSchema(messages: BorrowerValidationMessages): z.ZodType<BorrowerFormData, BorrowerFormData> {
-  return z.object({
-    borrowerCode: z.string().trim().min(1, { message: messages.borrowerCodeRequired }).max(32, { message: messages.borrowerCodeMax }),
-    barcode: createOptionalBarcodeSchema(messages),
-    fullName: z.string().trim().min(1, { message: messages.fullNameRequired }).max(100, { message: messages.fullNameMax }),
-    department: z.string().trim().min(1, { message: messages.departmentRequired }).max(100, { message: messages.departmentMax })
-  })
-}
+export const borrowerCreateSchema = z.object({
+  borrowerCode: z
+    .string()
+    .trim()
+    .min(1, DEFAULT_BORROWER_VALIDATION_MESSAGES.borrowerCodeRequired)
+    .max(32, DEFAULT_BORROWER_VALIDATION_MESSAGES.borrowerCodeMax),
+  barcode: createOptionalBarcodeSchema(DEFAULT_BORROWER_VALIDATION_MESSAGES),
+  fullName: z
+    .string()
+    .trim()
+    .min(1, DEFAULT_BORROWER_VALIDATION_MESSAGES.fullNameRequired)
+    .max(100, DEFAULT_BORROWER_VALIDATION_MESSAGES.fullNameMax),
+  department: z
+    .string()
+    .trim()
+    .min(1, DEFAULT_BORROWER_VALIDATION_MESSAGES.departmentRequired)
+    .max(100, DEFAULT_BORROWER_VALIDATION_MESSAGES.departmentMax),
+  email: z.string().trim().min(1, DEFAULT_BORROWER_VALIDATION_MESSAGES.emailRequired).email(DEFAULT_BORROWER_VALIDATION_MESSAGES.emailInvalid),
+  password: z.string().min(8, DEFAULT_BORROWER_VALIDATION_MESSAGES.passwordMin)
+})
 
-export const borrowerCreateSchema = createBorrowerBaseSchema(DEFAULT_BORROWER_VALIDATION_MESSAGES)
-
-export const borrowerUpdateSchema = borrowerCreateSchema.and(
-  z.object({
-    id: z.string().trim().min(1, { message: DEFAULT_BORROWER_VALIDATION_MESSAGES.idRequired })
-  })
-)
+export const borrowerUpdateSchema = z.object({
+  id: z.string().trim().min(1, DEFAULT_BORROWER_VALIDATION_MESSAGES.idRequired),
+  borrowerCode: z
+    .string()
+    .trim()
+    .min(1, DEFAULT_BORROWER_VALIDATION_MESSAGES.borrowerCodeRequired)
+    .max(32, DEFAULT_BORROWER_VALIDATION_MESSAGES.borrowerCodeMax),
+  barcode: createOptionalBarcodeSchema(DEFAULT_BORROWER_VALIDATION_MESSAGES),
+  fullName: z
+    .string()
+    .trim()
+    .min(1, DEFAULT_BORROWER_VALIDATION_MESSAGES.fullNameRequired)
+    .max(100, DEFAULT_BORROWER_VALIDATION_MESSAGES.fullNameMax),
+  department: z
+    .string()
+    .trim()
+    .min(1, DEFAULT_BORROWER_VALIDATION_MESSAGES.departmentRequired)
+    .max(100, DEFAULT_BORROWER_VALIDATION_MESSAGES.departmentMax),
+  email: z.string().trim().min(1, DEFAULT_BORROWER_VALIDATION_MESSAGES.emailRequired).email(DEFAULT_BORROWER_VALIDATION_MESSAGES.emailInvalid),
+  password: z.string().min(8, DEFAULT_BORROWER_VALIDATION_MESSAGES.passwordMin).optional().or(z.literal(''))
+})
 
 export const borrowerDeleteSchema = z.object({
   id: z.string().trim().min(1, { message: DEFAULT_BORROWER_VALIDATION_MESSAGES.idRequired })
 })
 
-export function getBorrowerFormSchema(t: (key: BorrowerValidationKey) => string): typeof borrowerCreateSchema {
-  return createBorrowerBaseSchema({
-    borrowerCodeRequired: t('borrowerCodeRequired'),
-    borrowerCodeMax: t('borrowerCodeMax'),
-    barcodeMax: t('barcodeMax'),
-    barcodeInvalid: t('barcodeInvalid'),
-    fullNameRequired: t('fullNameRequired'),
-    fullNameMax: t('fullNameMax'),
-    departmentRequired: t('departmentRequired'),
-    departmentMax: t('departmentMax'),
-    idRequired: t('idRequired')
+export function getBorrowerFormSchema(t: (key: BorrowerValidationKey) => string, isEdit: boolean): z.ZodType<BorrowerFormData, BorrowerFormData> {
+  return z.object({
+    borrowerCode: z.string().trim().min(1, t('borrowerCodeRequired')).max(32, t('borrowerCodeMax')),
+    barcode: z
+      .string()
+      .trim()
+      .max(64, t('barcodeMax'))
+      .refine((v) => v.length === 0 || BARCODE_PATTERN.test(v), t('barcodeInvalid'))
+      .transform((v) => (v.length > 0 ? v : undefined))
+      .optional(),
+    fullName: z.string().trim().min(1, t('fullNameRequired')).max(100, t('fullNameMax')),
+    department: z.string().trim().min(1, t('departmentRequired')).max(100, t('departmentMax')),
+    email: z.string().trim().min(1, t('emailRequired')).email(t('emailInvalid')),
+    password: z
+      .string()
+      .optional()
+      .refine(
+        (val) => {
+          if (isEdit) {
+            return !val || val.trim().length === 0 || val.length >= 8
+          }
+          return val !== undefined && val.trim().length >= 8
+        },
+        { message: t('passwordMin') }
+      )
   })
 }

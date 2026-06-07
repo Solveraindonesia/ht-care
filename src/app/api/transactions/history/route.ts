@@ -1,18 +1,26 @@
+import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import type { TransactionHistoryItem } from '@/types/transaction'
-import { createServerErrorResponse, createSuccessResponse, requireAuthenticatedSession } from '@/utils/api-route'
+import { createErrorResponse, createServerErrorResponse, createSuccessResponse } from '@/utils/api-route'
+import { getServerSession } from 'next-auth'
 
 export const dynamic = 'force-dynamic'
 
 export async function GET(): Promise<Response> {
-  const authResponse = await requireAuthenticatedSession()
+  const session = await getServerSession(authOptions)
 
-  if (authResponse) {
-    return authResponse
+  if (!session?.user) {
+    return createErrorResponse('Unauthorized.', 401)
   }
 
   try {
+    const where: { borrower_id?: string } = {}
+    if (session.user.role === 'BORROWER') {
+      where.borrower_id = session.user.id
+    }
+
     const transactions = await prisma.transaction.findMany({
+      where,
       orderBy: {
         createdAt: 'desc'
       },

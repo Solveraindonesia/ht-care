@@ -19,6 +19,28 @@ export async function PUT(request: Request): Promise<Response> {
       return createValidationErrorResponse(result.error)
     }
 
+    if (session.user.role === 'BORROWER') {
+      const updatedBorrower = await prisma.borrower.update({
+        where: { id: session.user.id },
+        data: { full_name: result.data.name },
+        select: {
+          id: true,
+          full_name: true,
+          email: true
+        }
+      })
+
+      return createSuccessResponse(
+        {
+          id: updatedBorrower.id,
+          name: updatedBorrower.full_name,
+          email: updatedBorrower.email,
+          role: 'BORROWER'
+        },
+        'Profile updated successfully.'
+      )
+    }
+
     const updatedUser = await prisma.user.update({
       where: { id: session.user.id },
       data: { name: result.data.name },

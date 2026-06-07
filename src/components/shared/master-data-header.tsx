@@ -10,10 +10,10 @@ interface MasterDataHeaderProps {
   description: string
   searchLabel: string
   searchPlaceholder: string
-  addLabel: string
+  addLabel?: string
   searchValue: string
   onSearchChange: (value: string) => void
-  onAdd: () => void
+  onAdd?: () => void
 }
 
 export function MasterDataHeader({
@@ -43,10 +43,12 @@ export function MasterDataHeader({
             onChange={(event) => onSearchChange(event.target.value)}
           />
         </label>
-        <Button type="button" className="h-10 rounded-xl" onClick={onAdd}>
-          <Plus className="h-4 w-4" />
-          {addLabel}
-        </Button>
+        {addLabel && onAdd && (
+          <Button type="button" className="h-10 rounded-xl" onClick={onAdd}>
+            <Plus className="h-4 w-4" />
+            {addLabel}
+          </Button>
+        )}
       </div>
     </div>
   )

@@ -7,7 +7,11 @@
     "scanReturn": "Scan Return",
     "logHistory": "Log History",
     "reportsAnalytics": "Reports & Analytics",
-    "settings": "Settings"
+    "settings": "Settings",
+    "borrowerDashboard": "Dashboard",
+    "borrowerHistory": "Loan History",
+    "borrowerStats": "Statistics",
+    "borrowerSettings": "Settings"
   },
   "sections": {
     "main": "MAIN",

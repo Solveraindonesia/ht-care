@@ -4,6 +4,7 @@ export interface Borrower {
   barcode: string | null
   fullName: string
   department: string
+  email: string
   createdAt: string
   updatedAt: string
 }
@@ -13,6 +14,8 @@ export interface BorrowerCreatePayload {
   barcode?: string
   fullName: string
   department: string
+  email: string
+  password?: string
 }
 
 export interface BorrowerUpdatePayload extends BorrowerCreatePayload {

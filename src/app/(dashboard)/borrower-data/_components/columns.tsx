@@ -46,6 +46,10 @@ export function useBorrowerColumns({ onEdit, onDelete }: UseBorrowerColumnsProps
         header: t('table.fullName')
       },
       {
+        accessorKey: 'email',
+        header: t('table.email')
+      },
+      {
         accessorKey: 'department',
         header: t('table.department')
       },

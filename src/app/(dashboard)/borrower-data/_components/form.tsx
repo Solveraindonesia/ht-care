@@ -18,7 +18,9 @@ const DEFAULT_BORROWER_FORM_VALUES: BorrowerFormData = {
   borrowerCode: '',
   barcode: undefined,
   fullName: '',
-  department: ''
+  department: '',
+  email: '',
+  password: ''
 }
 
 export interface BorrowerFormProps {
@@ -38,7 +40,9 @@ function getBorrowerFormDefaultValues(borrower: Borrower | null): BorrowerFormDa
     borrowerCode: borrower.borrowerCode,
     barcode: borrower.barcode || undefined,
     fullName: borrower.fullName,
-    department: borrower.department
+    department: borrower.department,
+    email: borrower.email,
+    password: ''
   }
 }
 
@@ -46,7 +50,7 @@ export function BorrowerForm({ open, borrower, isLoading, onOpenChange, onSubmit
   const t = useTranslations('borrower')
   const tValidation = useTranslations('borrower.validation')
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
-  const schema = getBorrowerFormSchema((key) => tValidation(key))
+  const schema = getBorrowerFormSchema((key) => tValidation(key), !!borrower)
 
   const {
     register,
@@ -102,6 +106,28 @@ export function BorrowerForm({ open, borrower, isLoading, onOpenChange, onSubmit
             <Input id="borrower-department" disabled={isLoading} placeholder={t('field.departmentPlaceholder')} {...register('department')} />
           </FieldContent>
           <FieldError>{errors.department?.message}</FieldError>
+        </Field>
+
+        <Field data-invalid={!!errors.email}>
+          <FieldLabel htmlFor="borrower-email">{t('field.email')}</FieldLabel>
+          <FieldContent>
+            <Input id="borrower-email" type="email" disabled={isLoading} placeholder={t('field.emailPlaceholder')} {...register('email')} />
+          </FieldContent>
+          <FieldError>{errors.email?.message}</FieldError>
+        </Field>
+
+        <Field data-invalid={!!errors.password}>
+          <FieldLabel htmlFor="borrower-password">{t('field.password')}</FieldLabel>
+          <FieldContent>
+            <Input
+              id="borrower-password"
+              type="password"
+              disabled={isLoading}
+              placeholder={borrower ? t('field.passwordPlaceholderEdit') : t('field.passwordPlaceholder')}
+              {...register('password')}
+            />
+          </FieldContent>
+          <FieldError>{errors.password?.message}</FieldError>
         </Field>
       </FieldGroup>
     </FormDialog>

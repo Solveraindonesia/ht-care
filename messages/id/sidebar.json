@@ -7,7 +7,11 @@
     "scanReturn": "Scan Kembali",
     "logHistory": "Riwayat Log",
     "reportsAnalytics": "Laporan & Analistik",
-    "settings": "Pengaturan"
+    "settings": "Pengaturan",
+    "borrowerDashboard": "Dashboard",
+    "borrowerHistory": "Riwayat Pinjaman",
+    "borrowerStats": "Statistik",
+    "borrowerSettings": "Pengaturan"
   },
   "sections": {
     "main": "UTAMA",
