@@ -5,7 +5,6 @@ import { Edit2, Trash2 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useMemo } from 'react'
 
-import { BarcodeDisplay } from '@/components/shared/barcode-display'
 import { Button } from '@/components/ui/button'
 
 import type { Borrower } from '@/types/borrower'
@@ -20,22 +19,6 @@ export function useBorrowerColumns({ onEdit, onDelete }: UseBorrowerColumnsProps
 
   return useMemo(
     () => [
-      {
-        id: 'barcode',
-        header: t('table.barcode'),
-        cell: ({ row }) => {
-          const borrower = row.original
-          const barcodeValue = borrower.barcode || borrower.borrowerCode
-          return (
-            <BarcodeDisplay
-              value={barcodeValue}
-              fileName={`borrower-${borrower.borrowerCode}`}
-              downloadLabel={t('barcode.download')}
-              previewLabel={t('barcode.preview')}
-            />
-          )
-        }
-      },
       {
         accessorKey: 'borrowerCode',
         header: t('table.borrowerCode'),

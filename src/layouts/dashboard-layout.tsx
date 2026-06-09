@@ -99,7 +99,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
       <aside
         className={cn(
           'bg-sidebar text-on-primary fixed top-0 left-0 z-50 hidden h-full flex-col shadow-xl transition-all duration-300 ease-in-out md:flex',
-          isCollapsed ? 'w-[80px]' : 'w-[220px]'
+          isCollapsed ? 'w-[80px]' : 'w-[240px]'
         )}
       >
         <div
@@ -172,7 +172,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
       <main
         className={cn(
           'bg-surface dark:bg-background flex min-h-screen w-full flex-1 flex-col transition-all duration-300 ease-in-out',
-          isCollapsed ? 'md:ml-[80px] md:w-[calc(100%-80px)]' : 'md:ml-[220px] md:w-[calc(100%-220px)]'
+          isCollapsed ? 'md:ml-[80px] md:w-[calc(100%-80px)]' : 'md:ml-[240px] md:w-[calc(100%-240px)]'
         )}
       >
         {/* TopAppBar */}
@@ -184,7 +184,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
                   <Menu className="h-6 w-6" />
                 </button>
               </SheetTrigger>
-              <SheetContent side="left" className="bg-sidebar text-on-primary w-[220px] border-none p-0 outline-none">
+              <SheetContent side="left" className="bg-sidebar text-on-primary w-[240px] border-none p-0 outline-none">
                 <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                 <SheetDescription className="sr-only">Main navigation for the application</SheetDescription>
                 <div className="mb-2 flex items-center gap-3 border-b border-white/10 px-6 py-6">

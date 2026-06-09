@@ -17,5 +17,10 @@
     "toggle": "Ganti bahasa",
     "id": "Indonesia (ID)",
     "en": "Inggris (EN)"
+  },
+  "pagination": {
+    "previous": "Sebelumnya",
+    "next": "Berikutnya",
+    "showing": "Menampilkan {start}-{end} dari {total} data"
   }
 }

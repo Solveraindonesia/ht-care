@@ -17,5 +17,10 @@
     "toggle": "Toggle language",
     "id": "Indonesian (ID)",
     "en": "English (EN)"
+  },
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next",
+    "showing": "Showing {start}-{end} of {total} items"
   }
 }

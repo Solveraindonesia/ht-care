@@ -117,9 +117,30 @@ export default function BorrowerScanPage(): React.JSX.Element {
         <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-5">
           {/* Left Panel - Active Loans list and Scanner */}
           <div className="flex flex-col gap-4 xl:col-span-2">
+            <ScanInput onCodeSubmit={handleCodeSubmit} isLoading={isHtLoading} />
+            {/* Scan Tips */}
+            <Card className="border-dashed">
+              <CardContent className="flex flex-col gap-3 py-4">
+                <h3 className="text-sm font-semibold">{t('tips.title')}</h3>
+                <ul className="text-muted-foreground space-y-2 text-xs">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="text-primary mt-0.5 size-3.5 shrink-0" />
+                    {t('tips.tip1')}
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="text-primary mt-0.5 size-3.5 shrink-0" />
+                    {t('tips.tip2')}
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Right Panel - Results & Submissions */}
+          <div className="xl:col-span-3">
             {activeLoans.length > 0 ? (
               /* Display list of all active loans */
-              <Card className="border-blue-200 bg-blue-50/50 dark:border-blue-900/50 dark:bg-blue-950/10">
+              <Card className="mb-4 border-blue-200 bg-blue-50/50 dark:border-blue-900/50 dark:bg-blue-950/10">
                 <CardHeader className="pb-3">
                   <CardTitle className="text-base text-blue-900 dark:text-blue-400">
                     {t('request.activeLoan').includes('Pinjaman') ? 'Pinjaman Aktif Anda' : 'Your Active Loans'} ({activeLoans.length})
@@ -144,34 +165,13 @@ export default function BorrowerScanPage(): React.JSX.Element {
                 </CardContent>
               </Card>
             ) : (
-              <Card className="border-dashed">
+              <Card className="mb-4 border-dashed">
                 <CardContent className="text-muted-foreground py-6 text-center text-sm">
                   {t('request.noActiveLoan') || 'Anda tidak memiliki pinjaman aktif saat ini.'}
                 </CardContent>
               </Card>
             )}
 
-            <ScanInput onCodeSubmit={handleCodeSubmit} isLoading={isHtLoading} />
-            {/* Scan Tips */}
-            <Card className="border-dashed">
-              <CardContent className="flex flex-col gap-3 py-4">
-                <h3 className="text-sm font-semibold">{t('tips.title')}</h3>
-                <ul className="text-muted-foreground space-y-2 text-xs">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="text-primary mt-0.5 size-3.5 shrink-0" />
-                    {t('tips.tip1')}
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="text-primary mt-0.5 size-3.5 shrink-0" />
-                    {t('tips.tip2')}
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Right Panel - Results & Submissions */}
-          <div className="xl:col-span-3">
             {isHtLoading && (
               <div className="flex flex-col gap-4">
                 <Skeleton className="h-44 w-full rounded-2xl" />

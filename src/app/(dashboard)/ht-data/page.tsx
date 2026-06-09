@@ -131,6 +131,7 @@ export default function DataHtPage(): React.JSX.Element {
         isLoading={htItemsQuery.isLoading}
         loadingMessage={t('feedback.loading')}
         emptyMessage={t('feedback.empty')}
+        pageSize={10}
       />
 
       {isFormOpen && (
