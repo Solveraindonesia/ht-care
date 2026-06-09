@@ -5,7 +5,7 @@ import { ThemeToggle } from '@/components/shared/theme-toggle'
 import { UserProfile } from '@/components/shared/user-profile'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { cn } from '@/lib/utils'
-import { BarChart, ChevronLeft, ChevronRight, FileText, LayoutDashboard, Menu, RadioReceiver, Settings } from 'lucide-react'
+import { BarChart, ChevronLeft, ChevronRight, FileText, LayoutDashboard, Menu, RadioReceiver, ScanLine, Settings } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import * as React from 'react'
@@ -22,16 +22,28 @@ const sidebarNavItems = [
     sectionKey: 'main'
   },
   {
+    titleKey: 'borrowerScan',
+    href: '/borrower/scan',
+    icon: ScanLine,
+    sectionKey: 'transaction'
+  },
+  {
+    titleKey: 'borrowerRequests',
+    href: '/borrower/requests',
+    icon: FileText,
+    sectionKey: 'transaction'
+  },
+  {
     titleKey: 'borrowerHistory',
     href: '/borrower/history',
     icon: FileText,
-    sectionKey: 'main'
+    sectionKey: 'report'
   },
   {
     titleKey: 'borrowerStats',
     href: '/borrower/stats',
     icon: BarChart,
-    sectionKey: 'main'
+    sectionKey: 'report'
   },
   {
     titleKey: 'borrowerSettings',
@@ -68,7 +80,7 @@ export function BorrowerLayout({ children }: BorrowerLayoutProps) {
         >
           <RadioReceiver className="h-7 w-7 shrink-0 text-white" />
           {!isCollapsed && (
-            <h1 className="animate-in fade-in truncate text-2xl leading-tight font-bold tracking-tight text-white duration-300">SIP-HT</h1>
+            <h1 className="animate-in fade-in truncate text-2xl leading-tight font-bold tracking-tight text-white duration-300">HT-CARE</h1>
           )}
         </div>
 

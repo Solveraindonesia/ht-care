@@ -3,7 +3,6 @@
 import { LanguageSwitcher } from '@/components/shared/language-switcher'
 import { ThemeToggle } from '@/components/shared/theme-toggle'
 import { UserProfile } from '@/components/shared/user-profile'
-import { Input } from '@/components/ui/input'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { cn } from '@/lib/utils'
 import {
@@ -16,7 +15,6 @@ import {
   RadioReceiver,
   RotateCcw,
   ScanLine,
-  Search,
   Settings,
   Users
 } from 'lucide-react'
@@ -57,6 +55,12 @@ const sidebarNavItems = [
     titleKey: 'scanReturn',
     href: '/scan-return',
     icon: RotateCcw,
+    sectionKey: 'transaction'
+  },
+  {
+    titleKey: 'borrowerRequestsAdmin',
+    href: '/borrower-requests',
+    icon: FileText,
     sectionKey: 'transaction'
   },
   {
@@ -106,7 +110,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
         >
           <RadioReceiver className="h-7 w-7 shrink-0 text-white" />
           {!isCollapsed && (
-            <h1 className="animate-in fade-in truncate text-2xl leading-tight font-bold tracking-tight text-white duration-300">SIP-HT</h1>
+            <h1 className="animate-in fade-in truncate text-2xl leading-tight font-bold tracking-tight text-white duration-300">HT-CARE</h1>
           )}
         </div>
 
@@ -236,11 +240,6 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
           </div>
 
           <div className="flex items-center gap-2 sm:gap-4">
-            <div className="relative hidden w-64 lg:block xl:w-80">
-              <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
-              <Input className="bg-card border-border/50 focus-visible:ring-primary h-10 rounded-xl pl-10" placeholder="Search..." type="text" />
-            </div>
-
             <div className="border-border ml-2 flex items-center gap-2 border-l pl-4">
               <LanguageSwitcher />
               <ThemeToggle />

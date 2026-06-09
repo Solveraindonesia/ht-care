@@ -76,5 +76,55 @@
       "loadError": "Failed to load transaction history.",
       "empty": "No transaction history."
     }
+  },
+  "request": {
+    "title": "HT Approvals",
+    "description": "List of HT borrow and return requests from borrowers.",
+    "borrowerTitle": "Your Request Status",
+    "borrowerDescription": "Track your HT unit borrow and return requests.",
+    "scanTitle": "Scan Borrow & Return",
+    "scanDescription": "Scan HT barcode to submit borrow or return requests.",
+    "submitBorrow": "Request Borrow",
+    "submitReturn": "Request Return",
+    "successBorrow": "Borrow request submitted successfully. Waiting for Admin approval.",
+    "successReturn": "Return request submitted successfully. Waiting for Admin approval.",
+    "activeLoan": "Your Active Loan",
+    "noActiveLoan": "You have no active loans at the moment.",
+    "alreadyPending": "You already have a request waiting for approval.",
+    "approve": "Approve",
+    "reject": "Reject",
+    "approveTitle": "Approve Request",
+    "rejectTitle": "Reject Request",
+    "noteLabel": "Notes / Description",
+    "notePlaceholder": "Enter additional notes...",
+    "rejectNotePlaceholder": "Enter rejection reason...",
+    "conditionLabel": "HT Return Condition",
+    "status": {
+      "pending": "Pending",
+      "approved": "Approved",
+      "rejected": "Rejected"
+    },
+    "type": {
+      "borrow": "Borrow",
+      "return": "Return"
+    },
+    "table": {
+      "borrower": "Borrower",
+      "ht": "HT",
+      "type": "Type",
+      "status": "Status",
+      "note": "Note",
+      "operator": "Operator",
+      "time": "Request Time"
+    },
+    "feedback": {
+      "approveSuccess": "Request approved successfully.",
+      "rejectSuccess": "Request rejected successfully.",
+      "errorApprove": "Failed to approve request.",
+      "errorReject": "Failed to reject request.",
+      "loading": "Loading requests...",
+      "loadError": "Failed to load requests.",
+      "empty": "No requests found."
+    }
   }
 }

@@ -76,5 +76,55 @@
       "loadError": "Gagal memuat riwayat transaksi.",
       "empty": "Tidak ada riwayat transaksi."
     }
+  },
+  "request": {
+    "title": "Persetujuan HT",
+    "description": "Daftar pengajuan peminjaman dan pengembalian HT dari peminjam.",
+    "borrowerTitle": "Status Pengajuan Anda",
+    "borrowerDescription": "Lacak pengajuan peminjaman dan pengembalian unit HT Anda.",
+    "scanTitle": "Scan Pinjam & Kembali",
+    "scanDescription": "Scan barcode HT untuk mengajukan peminjaman atau pengembalian.",
+    "submitBorrow": "Ajukan Peminjaman",
+    "submitReturn": "Ajukan Pengembalian",
+    "successBorrow": "Pengajuan peminjaman berhasil dikirim. Menunggu persetujuan Admin.",
+    "successReturn": "Pengajuan pengembalian berhasil dikirim. Menunggu persetujuan Admin.",
+    "activeLoan": "Pinjaman Aktif Anda",
+    "noActiveLoan": "Anda tidak memiliki pinjaman aktif saat ini.",
+    "alreadyPending": "Anda sudah memiliki pengajuan yang sedang menunggu persetujuan.",
+    "approve": "Setujui",
+    "reject": "Tolak",
+    "approveTitle": "Setujui Pengajuan",
+    "rejectTitle": "Tolak Pengajuan",
+    "noteLabel": "Keterangan / Catatan",
+    "notePlaceholder": "Masukkan catatan tambahan...",
+    "rejectNotePlaceholder": "Masukkan alasan penolakan...",
+    "conditionLabel": "Kondisi HT saat Pengembalian",
+    "status": {
+      "pending": "Menunggu",
+      "approved": "Disetujui",
+      "rejected": "Ditolak"
+    },
+    "type": {
+      "borrow": "Pinjam",
+      "return": "Kembali"
+    },
+    "table": {
+      "borrower": "Peminjam",
+      "ht": "HT",
+      "type": "Tipe",
+      "status": "Status",
+      "note": "Catatan",
+      "operator": "Operator",
+      "time": "Waktu Pengajuan"
+    },
+    "feedback": {
+      "approveSuccess": "Pengajuan berhasil disetujui.",
+      "rejectSuccess": "Pengajuan berhasil ditolak.",
+      "errorApprove": "Gagal menyetujui pengajuan.",
+      "errorReject": "Gagal menolak pengajuan.",
+      "loading": "Memuat data pengajuan...",
+      "loadError": "Gagal memuat data pengajuan.",
+      "empty": "Tidak ada pengajuan HT saat ini."
+    }
   }
 }

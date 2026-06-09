@@ -5,10 +5,13 @@
     "dataBorrower": "Data Peminjam",
     "scanBorrow": "Scan Pinjam",
     "scanReturn": "Scan Kembali",
+    "borrowerRequestsAdmin": "Persetujuan HT",
     "logHistory": "Riwayat Log",
     "reportsAnalytics": "Laporan & Analistik",
     "settings": "Pengaturan",
     "borrowerDashboard": "Dashboard",
+    "borrowerScan": "Scan HT",
+    "borrowerRequests": "Status Pengajuan",
     "borrowerHistory": "Riwayat Pinjaman",
     "borrowerStats": "Statistik",
     "borrowerSettings": "Pengaturan"

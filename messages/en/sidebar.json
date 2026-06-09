@@ -5,10 +5,13 @@
     "dataBorrower": "Borrower Data",
     "scanBorrow": "Scan Borrow",
     "scanReturn": "Scan Return",
+    "borrowerRequestsAdmin": "HT Approvals",
     "logHistory": "Log History",
     "reportsAnalytics": "Reports & Analytics",
     "settings": "Settings",
     "borrowerDashboard": "Dashboard",
+    "borrowerScan": "Scan HT",
+    "borrowerRequests": "Request Status",
     "borrowerHistory": "Loan History",
     "borrowerStats": "Statistics",
     "borrowerSettings": "Settings"

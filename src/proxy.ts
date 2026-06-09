@@ -28,6 +28,7 @@ export default withAuth(
           pathname.startsWith('/riwayat-log') ||
           pathname.startsWith('/reports-analytics') ||
           pathname.startsWith('/settings') ||
+          pathname.startsWith('/borrower-requests') ||
           pathname === '/'
 
         if (isAdminPath) {
