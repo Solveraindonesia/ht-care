@@ -64,15 +64,6 @@ export async function POST(request: Request, props: { params: Promise<{ id: stri
         return createErrorResponse('This HT unit is no longer available.', 400)
       }
 
-      // Check if borrower already has an active loan
-      const activeTransaction = await prisma.transaction.findFirst({
-        where: { borrower_id: dbRequest.borrower_id, status: 'BORROWED' }
-      })
-
-      if (activeTransaction) {
-        return createErrorResponse('This borrower already has an active loan.', 400)
-      }
-
       // Execute atomic transaction
       const [approvedRequest] = await prisma.$transaction([
         prisma.transactionRequest.update({

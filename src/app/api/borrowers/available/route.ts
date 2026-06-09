@@ -28,13 +28,6 @@ export async function GET(): Promise<Response> {
 
   try {
     const borrowers = await prisma.borrower.findMany({
-      where: {
-        transactions: {
-          none: {
-            status: 'BORROWED'
-          }
-        }
-      },
       orderBy: {
         full_name: 'asc'
       }

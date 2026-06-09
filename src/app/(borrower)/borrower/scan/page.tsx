@@ -9,7 +9,7 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { useCreateBorrowRequest, useCreateReturnRequest, useRequests } from '@/hooks/use-requests'
 import { useHtByCode, useTransactionHistory } from '@/hooks/use-transactions'
 import { format } from 'date-fns'
-import { CheckCircle2, Info, Loader2, Radio, ScanLine } from 'lucide-react'
+import { AlertCircle, CheckCircle2, Loader2, Radio, ScanLine } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { toast } from 'sonner'
@@ -19,16 +19,15 @@ export default function BorrowerScanPage(): React.JSX.Element {
   const tHt = useTranslations('ht')
   const [scannedCode, setScannedCode] = useState('')
 
-  // 1. Fetch transaction history to check active loan
+  // 1. Fetch transaction history to check active loans
   const { data: history, isLoading: isHistoryLoading } = useTransactionHistory()
-  const activeLoan = history?.find((t) => t.status === 'BORROWED')
+  const activeLoans = history?.filter((t) => t.status === 'BORROWED') || []
 
   // 2. Fetch scanned HT details
   const { data: htItem, isLoading: isHtLoading, error: htError } = useHtByCode(scannedCode)
 
-  // 3. Fetch requests to check if borrower already has a PENDING request
+  // 3. Fetch pending requests
   const { data: requests, isLoading: isRequestsLoading } = useRequests('PENDING')
-  const hasPendingRequest = requests && requests.length > 0
 
   // Mutations
   const borrowRequestMutation = useCreateBorrowRequest()
@@ -52,26 +51,38 @@ export default function BorrowerScanPage(): React.JSX.Element {
     prevErrorRef.current = htError?.message ?? null
   }, [htError, scannedCode])
 
+  const isLoading = isHistoryLoading || isRequestsLoading
+  const isActionPending = borrowRequestMutation.isPending || returnRequestMutation.isPending
+  const hasResult = htItem !== undefined
+
+  // Determine if scanned HT is already borrowed by the logged-in borrower
+  const myActiveLoan = activeLoans.find((loan) => loan.htCode === htItem?.htCode)
+  const isBorrowedByMe = !!myActiveLoan
+
+  // Determine if there is already a pending request for the scanned HT unit
+  const scannedHtPendingRequest = requests?.find((r) => r.htItem.htCode === htItem?.htCode)
+  const hasPendingRequestForScannedHt = !!scannedHtPendingRequest
+
   const handleSubmitRequest = async () => {
     if (!htItem) return
 
     try {
-      if (!activeLoan) {
-        // Submit Borrow Request
+      if (!isBorrowedByMe) {
+        // --- Borrow Request Flow ---
         if (htItem.status !== 'AVAILABLE') {
           toast.error(t('borrow.errorAlreadyBorrowed'))
+          return
+        }
+        if (hasPendingRequestForScannedHt) {
+          toast.error(t('request.alreadyPending'))
           return
         }
         await borrowRequestMutation.mutateAsync({ htCode: htItem.htCode })
         toast.success(t('request.successBorrow'))
       } else {
-        // Submit Return Request
-        if (htItem.htCode !== activeLoan.htCode) {
-          toast.error(
-            t('request.activeLoan') === 'Your Active Loan'
-              ? 'Scanned HT code does not match your active loan.'
-              : 'HT yang di-scan tidak sesuai dengan pinjaman aktif Anda.'
-          )
+        // --- Return Request Flow ---
+        if (hasPendingRequestForScannedHt) {
+          toast.error(t('request.alreadyPending'))
           return
         }
         await returnRequestMutation.mutateAsync({ htCode: htItem.htCode })
@@ -83,12 +94,6 @@ export default function BorrowerScanPage(): React.JSX.Element {
       toast.error(errMsg)
     }
   }
-
-  const isLoading = isHistoryLoading || isRequestsLoading
-  const isActionPending = borrowRequestMutation.isPending || returnRequestMutation.isPending
-
-  // Decide what to render in results panel
-  const hasResult = htItem !== undefined
 
   return (
     <div className="flex flex-col gap-6">
@@ -108,49 +113,45 @@ export default function BorrowerScanPage(): React.JSX.Element {
           <Skeleton className="h-60 rounded-2xl lg:col-span-2" />
           <Skeleton className="h-60 rounded-2xl lg:col-span-3" />
         </div>
-      ) : hasPendingRequest ? (
-        /* Alert if user already has a pending request */
-        <Card className="border-amber-200 bg-amber-50/50 dark:border-amber-900/50 dark:bg-amber-950/10">
-          <CardHeader className="flex flex-row items-center gap-3">
-            <Info className="size-6 shrink-0 text-amber-600" />
-            <div>
-              <CardTitle className="text-lg text-amber-800 dark:text-amber-400">{t('request.alreadyPending')}</CardTitle>
-              <CardDescription className="text-amber-700/80 dark:text-amber-500/80">
-                {t('request.successBorrow').includes('persetujuan')
-                  ? 'Anda hanya dapat memiliki satu pengajuan aktif yang menunggu persetujuan Admin pada satu waktu.'
-                  : 'You can only have one pending request at a time. Please wait for the administrator to approve or reject your current request.'}
-              </CardDescription>
-            </div>
-          </CardHeader>
-        </Card>
       ) : (
         <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-5">
-          {/* Left Panel - Scanner */}
+          {/* Left Panel - Active Loans list and Scanner */}
           <div className="flex flex-col gap-4 xl:col-span-2">
-            {activeLoan && (
-              /* Display Active Loan info */
+            {activeLoans.length > 0 ? (
+              /* Display list of all active loans */
               <Card className="border-blue-200 bg-blue-50/50 dark:border-blue-900/50 dark:bg-blue-950/10">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-base text-blue-900 dark:text-blue-400">{t('request.activeLoan')}</CardTitle>
+                  <CardTitle className="text-base text-blue-900 dark:text-blue-400">
+                    {t('request.activeLoan').includes('Pinjaman') ? 'Pinjaman Aktif Anda' : 'Your Active Loans'} ({activeLoans.length})
+                  </CardTitle>
                 </CardHeader>
-                <CardContent className="text-sm text-blue-800 dark:text-blue-300">
-                  <div className="flex flex-col gap-1">
-                    <p>
-                      <strong>{t('detail.htCode')}:</strong> <span className="font-mono">{activeLoan.htCode}</span>
-                    </p>
-                    <p>
-                      <strong>{t('detail.brandType')}:</strong> {activeLoan.brandType}
-                    </p>
-                    <p>
-                      <strong>{t('detail.borrowTime')}:</strong> {format(new Date(activeLoan.borrowTime), 'dd MMM yyyy, HH:mm')}
-                    </p>
-                  </div>
+                <CardContent className="flex max-h-[280px] flex-col gap-3 overflow-y-auto text-sm text-blue-800 dark:text-blue-300">
+                  {activeLoans.map((loan) => (
+                    <div key={loan.id} className="flex flex-col border-b border-blue-200/50 pb-2 last:border-0 last:pb-0 dark:border-blue-800/30">
+                      <p className="flex justify-between">
+                        <span>
+                          <strong>{t('detail.htCode')}:</strong> <span className="font-mono font-semibold">{loan.htCode}</span>
+                        </span>
+                        <Badge variant="outline" className="bg-blue-100/50 text-xs dark:bg-blue-900/20">
+                          {loan.brandType}
+                        </Badge>
+                      </p>
+                      <p className="text-muted-foreground mt-1 text-xs">
+                        <strong>{t('detail.borrowTime')}:</strong> {format(new Date(loan.borrowTime), 'dd MMM yyyy, HH:mm')}
+                      </p>
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
+            ) : (
+              <Card className="border-dashed">
+                <CardContent className="text-muted-foreground py-6 text-center text-sm">
+                  {t('request.noActiveLoan') || 'Anda tidak memiliki pinjaman aktif saat ini.'}
                 </CardContent>
               </Card>
             )}
 
             <ScanInput onCodeSubmit={handleCodeSubmit} isLoading={isHtLoading} />
-
             {/* Scan Tips */}
             <Card className="border-dashed">
               <CardContent className="flex flex-col gap-3 py-4">
@@ -158,7 +159,7 @@ export default function BorrowerScanPage(): React.JSX.Element {
                 <ul className="text-muted-foreground space-y-2 text-xs">
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="text-primary mt-0.5 size-3.5 shrink-0" />
-                    {!activeLoan ? t('tips.tip1') : t('tips.returnTip') || 'Scan HT yang ingin Anda kembalikan.'}
+                    {t('tips.tip1')}
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="text-primary mt-0.5 size-3.5 shrink-0" />
@@ -169,7 +170,7 @@ export default function BorrowerScanPage(): React.JSX.Element {
             </Card>
           </div>
 
-          {/* Right Panel - Results */}
+          {/* Right Panel - Results & Submissions */}
           <div className="xl:col-span-3">
             {isHtLoading && (
               <div className="flex flex-col gap-4">
@@ -203,17 +204,43 @@ export default function BorrowerScanPage(): React.JSX.Element {
                       <div>
                         <p className="text-muted-foreground text-xs">{t('detail.status')}</p>
                         <Badge variant="outline" className="font-medium">
-                          {htItem.status === 'AVAILABLE' ? tHt('status.available') : tHt('status.borrowed')}
+                          {isBorrowedByMe
+                            ? t('request.activeLoan').includes('Pinjaman')
+                              ? 'Dipinjam oleh Anda'
+                              : 'Borrowed by You'
+                            : htItem.status === 'AVAILABLE'
+                              ? tHt('status.available')
+                              : tHt('status.borrowed')}
                         </Badge>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
 
+                {/* Pending request warning for this scanned HT unit */}
+                {hasPendingRequestForScannedHt && (
+                  <Card className="border-amber-200 bg-amber-50/50 dark:border-amber-900/50 dark:bg-amber-950/10">
+                    <CardContent className="flex items-center gap-3 py-3 text-sm text-amber-800 dark:text-amber-400">
+                      <AlertCircle className="size-5 shrink-0" />
+                      <p>
+                        <strong>{t('request.alreadyPending')}</strong> &mdash;{' '}
+                        {scannedHtPendingRequest?.type === 'BORROW'
+                          ? 'Pengajuan pinjam untuk unit ini sedang menunggu persetujuan.'
+                          : 'Pengajuan kembali untuk unit ini sedang menunggu persetujuan.'}
+                      </p>
+                    </CardContent>
+                  </Card>
+                )}
+
                 {/* Submission button */}
-                <Button onClick={handleSubmitRequest} disabled={isActionPending} className="w-full" size="lg">
+                <Button
+                  onClick={handleSubmitRequest}
+                  disabled={isActionPending || hasPendingRequestForScannedHt || (htItem.status !== 'AVAILABLE' && !isBorrowedByMe)}
+                  className="w-full"
+                  size="lg"
+                >
                   {isActionPending && <Loader2 className="mr-2 size-4 animate-spin" />}
-                  {!activeLoan ? t('request.submitBorrow') : t('request.submitReturn')}
+                  {isBorrowedByMe ? t('request.submitReturn') : t('request.submitBorrow')}
                 </Button>
               </div>
             )}
@@ -225,10 +252,8 @@ export default function BorrowerScanPage(): React.JSX.Element {
                   <div className="bg-muted mb-4 flex size-16 items-center justify-center rounded-full">
                     <Radio className="text-muted-foreground size-7" />
                   </div>
-                  <h3 className="text-lg font-semibold">{!activeLoan ? t('empty.borrowTitle') : t('empty.returnTitle')}</h3>
-                  <p className="text-muted-foreground mt-1 max-w-sm text-sm">
-                    {!activeLoan ? t('empty.borrowDescription') : t('empty.returnDescription')}
-                  </p>
+                  <h3 className="text-lg font-semibold">{t('empty.borrowTitle')}</h3>
+                  <p className="text-muted-foreground mt-1 max-w-sm text-sm">{t('request.scanDescription')}</p>
                 </CardContent>
               </Card>
             )}

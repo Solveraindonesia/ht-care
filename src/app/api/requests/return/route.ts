@@ -61,13 +61,13 @@ export async function POST(request: Request): Promise<Response> {
       return createErrorResponse('You do not currently have this HT logged out under an active loan.', 400)
     }
 
-    // 3. Check if borrower already has any pending request
+    // 3. Check if borrower already has a pending request for this HT unit
     const pendingRequest = await prisma.transactionRequest.findFirst({
-      where: { borrower_id: borrowerId, status: 'PENDING' }
+      where: { borrower_id: borrowerId, status: 'PENDING', ht_id: htItem.id }
     })
 
     if (pendingRequest) {
-      return createErrorResponse('You already have a pending request. Please wait for Admin approval.', 400)
+      return createErrorResponse('You already have a pending request for this HT unit. Please wait for Admin approval.', 400)
     }
 
     // 4. Create return request

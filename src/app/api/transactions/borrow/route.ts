@@ -55,15 +55,6 @@ export async function POST(request: Request): Promise<Response> {
       return createErrorResponse('Borrower not found.', 404)
     }
 
-    // Check if borrower already has an active transaction
-    const existingTransaction = await prisma.transaction.findFirst({
-      where: { borrower_id: borrowerId, status: 'BORROWED' }
-    })
-
-    if (existingTransaction) {
-      return createErrorResponse('This borrower already has an active borrow. Return the current HT first.', 400)
-    }
-
     // Atomic transaction: create record + update HT status
     const [transaction] = await prisma.$transaction([
       prisma.transaction.create({
