@@ -28,18 +28,18 @@ export function BarcodeDisplay({ value, fileName, downloadLabel, previewLabel }:
     }
 
     const computedStyle = window.getComputedStyle(containerRef.current)
-    
+
     // Scale factor for high definition (e.g., 4x)
     const scale = 4
     const attrWidth = svg.getAttribute('width')
     const attrHeight = svg.getAttribute('height')
-    
+
     const parsedWidth = attrWidth ? parseFloat(attrWidth) : NaN
     const parsedHeight = attrHeight ? parseFloat(attrHeight) : NaN
-    
+
     const intrinsicWidth = isNaN(parsedWidth) ? svg.getBoundingClientRect().width : parsedWidth
     const intrinsicHeight = isNaN(parsedHeight) ? svg.getBoundingClientRect().height : parsedHeight
-    
+
     const width = Math.ceil(intrinsicWidth * scale)
     const height = Math.ceil(intrinsicHeight * scale)
 
@@ -49,7 +49,7 @@ export function BarcodeDisplay({ value, fileName, downloadLabel, previewLabel }:
     clonedSvg.style.backgroundColor = computedStyle.backgroundColor
     clonedSvg.setAttribute('width', width.toString())
     clonedSvg.setAttribute('height', height.toString())
-    
+
     if (!clonedSvg.getAttribute('viewBox')) {
       clonedSvg.setAttribute('viewBox', `0 0 ${intrinsicWidth} ${intrinsicHeight}`)
     }
